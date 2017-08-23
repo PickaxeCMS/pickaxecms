@@ -1,0 +1,32 @@
+.Pages .lander {
+  padding: 80px 0;
+  text-align: center;
+}
+
+.Pages .lander h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+}
+
+.Pages .lander p {
+  color: #999;
+}
+.Pages .Divisions h4 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Pages .Divisions h1 {
+  font-family: "Open Sans", sans-serif;
+  color:'red';
+  overflow: hidden;
+  line-height: 1.5;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.Pages .Divisions p {
+  color: #666;
+}
