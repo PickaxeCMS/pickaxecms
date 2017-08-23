@@ -98,7 +98,7 @@ class Navbar extends Component {
         <Menu inverted secondary>
           <Menu.Item href='/' style={{height:50}}>
             <Image src={logo} style={{width:'30px', height:'30px', marginTop: '0px', marginLeft:0, cursor:'pointer'}}/>
-            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>ampsight</h3>
+            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>{process.env.REACT_APP_NAME}</h3>
           </Menu.Item>
             <MediaQuery minDeviceWidth={1224} style={{width:"100%"}}>
               {
