@@ -29,7 +29,7 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
      
      
       
-To run development server
+To run development server      
 `
 npm start
 ` 
