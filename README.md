@@ -17,7 +17,8 @@ Hey, we're in development.
 In / and /serverless     
 `
 npm install
-`
+`      
+    
 Using terminal, make sure aws-cli is configured using correct credentials.    
 If not, run      
 `
