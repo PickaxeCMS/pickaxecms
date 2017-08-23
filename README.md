@@ -25,7 +25,14 @@ If not, run:
 aws configure
 `     
 Using Access Key and Secret Access Keys credentials obtained from AWS Console.   
-(For more help on this, check out the <a href="http://docs.aws.amazon.com/cli/latest/userguide/installing.html">AWS CLI Installation Guide</a> and <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration"> AWS CLI Configuration Guide</a>)      
+(For more help on this, check out the <a href="http://docs.aws.amazon.com/cli/latest/userguide/installing.html">AWS CLI Installation Guide</a> and <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-quick-configuration"> AWS CLI Configuration Guide</a>)   
+     
+     
+      
+To run development server
+`
+npm start
+` 
       
 
 ## IN PROGRESS     
