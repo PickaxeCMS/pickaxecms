@@ -12,6 +12,12 @@
 
 Hey, we're in development.
 
+## Dependencies
+
+jq (Can be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)
+
+
+
 ## Installation & Usage
 
 In / and /serverless     
