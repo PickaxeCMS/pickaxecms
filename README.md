@@ -14,9 +14,15 @@ Hey, we're in development.
 
 ## Dependencies
 
-jq (Can be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)
+jq     
+(jq be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)     
+        
+NPM    
+(NPM be downloaded <a href="https://docs.npmjs.com/getting-started/installing-node">here</a>)
 
-
+Serverless Framework    
+`# Installing the serverless cli      
+npm install -g serverless`
 
 ## Installation & Usage
 
