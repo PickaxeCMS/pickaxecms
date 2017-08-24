@@ -137,7 +137,7 @@ class CreateEditPage extends Component {
       path: `/posts/${page.id}`,
       method: 'PUT',
       body: page,
-      queryParams:{'pageId': page.pageId}
+      queryParams:{'pageId': page.pageId, "TableName": process.env.REACT_APP_AppName}
     }, this.props.userToken);
   }
 

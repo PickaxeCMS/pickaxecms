@@ -1,0 +1,9 @@
+{
+    "pageId": {"S": "site_plan"},
+    "id": {"S": "site_plan"},
+    "category": {"S": "page"},
+    "navItems": {"M": {}},
+    "divisionsOrder": {"L": [
+        {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"}
+      ]}
+}

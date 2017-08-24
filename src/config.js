@@ -1,16 +1,16 @@
 export default {
   apiGateway: {
-    URL: 'https://6z4midsahg.execute-api.us-east-1.amazonaws.com/prod',
-    REGION: 'us-east-1',
+    URL: process.env.REACT_APP_ServiceEndpoint,
+    REGION: process.env.REACT_APP_AWS_REGION,
   },
   cognito: {
-    IDENTITY_POOL_ID: 'us-east-1:57b62c6f-0627-4847-8e0a-f24788006e8a',
-    REGION: 'us-east-1',
-    USER_POOL_ID : 'us-east-1_yCqOxyVjm',
-    APP_CLIENT_ID : 'i2tnvcl235k6ekc0429varbac',
+    IDENTITY_POOL_ID: process.env.REACT_APP_IdentityPoolId,
+    REGION: process.env.REACT_APP_AWS_REGION,
+    USER_POOL_ID : process.env.REACT_APP_UserPoolId,
+    APP_CLIENT_ID : process.env.REACT_APP_AppClientId,
   },
   MAX_ATTACHMENT_SIZE: 5000000,
   s3: {
-    BUCKET: 'ampsight-uploads'
+    BUCKET: process.env.REACT_APP_UploadsBucket
   }
 };

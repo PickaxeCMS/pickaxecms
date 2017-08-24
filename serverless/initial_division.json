@@ -1,0 +1,25 @@
+{
+    "pageId": {"S": "site_plan"},
+    "id": {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"},
+    "category": {"S": "division"},
+    "sections": {
+      "M": {
+      "header1": {"S": "Welcome to Pickaxe"},
+      "sections": {
+        "L": [
+          {
+            "L": [
+              {
+                "S": "Your auto-generated username and password are Admin@example.com and Passw0rd!"
+              }
+            ]
+          }
+        ]
+      },
+      "attachment": {"M":{
+        "image": {"S": "https://github.com/PickaxeCMS/pickaxecms/blob/master/pickaxe.png"},
+        "style": {"S": "top"}
+      }}
+      }
+    }
+}

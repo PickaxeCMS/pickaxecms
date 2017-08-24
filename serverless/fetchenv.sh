@@ -41,16 +41,15 @@ function main {
     region="$2"
   fi
 
-  stacks=$(aws cloudformation describe-stacks --region "$region" | \
-             grep "StackName" | grep -i "$stack_filter" | cut -d\" -f4)
-
+  stacks=$(aws cloudformation describe-stacks --stack-name "$1")
+  # aws cloudformation describe-stacks --stack-name "$1" --output json
   if [ -z "$stacks" ]; then
     echo "Unable to locate any CloudFormation stacks matching the supplied name"
     exit 1
   fi
 
-  for stack in $stacks; do
-    stack_info=$(aws cloudformation describe-stacks --region $region --stack-name $stack --output json)
+  # for stack in $stacks; do
+    stack_info=$(aws cloudformation describe-stacks --region $2 --stack-name $1 --output json)
     if [[ "$stack_info" =~ "OutputKey" ]]; then
       read -r -a output_keys <<< $(echo "$stack_info" | jq ".Stacks[].Outputs[].OutputKey")
       read -r -a output_vals <<< $(echo "$stack_info" | jq ".Stacks[].Outputs[].OutputValue")
@@ -61,7 +60,7 @@ function main {
         export "$key"="$val"
       done
     fi
-  done
+  # done
 }
 
 main "$@"

@@ -77,7 +77,7 @@ function receiveDivisions(page, json) {
 function fetchDivisions(page) {
   return dispatch => {
     dispatch(requestDivisions(page))
-    return invokeApig({ path: '/posts', queryParams:{'pageId': page} }, '')
+    return invokeApig({ path: '/posts', queryParams:{'pageId': page, "TableName": process.env.REACT_APP_AppName} }, '')
       .then(json => { dispatch(receiveDivisions(page, json))})
   }
 }

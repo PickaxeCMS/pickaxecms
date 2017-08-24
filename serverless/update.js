@@ -5,7 +5,7 @@ export async function main(event, context, callback) {
   const data = JSON.parse(event.body);
   console.log('data =====>', data)
   const params = {
-    TableName: 'ampsight',
+    TableName: event.queryStringParameters.TableName,
     Key: {
       pageId: event.queryStringParameters.pageId,
       id: event.pathParameters.id,

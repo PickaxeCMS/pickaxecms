@@ -151,7 +151,7 @@ class CreateEditDivision extends Component {
       path: `/posts/${division.id}`,
       method: 'PUT',
       body: division,
-      queryParams:{'pageId': this.props.selectedPage}
+      queryParams:{'pageId': this.props.selectedPage, "TableName": process.env.REACT_APP_AppName}
     }, this.props.userToken);
   }
 

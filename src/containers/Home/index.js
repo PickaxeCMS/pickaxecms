@@ -90,30 +90,14 @@ class Home extends Component {
   }
 
   render() {
-    const { selectedPage, divisions, isFetching } = this.props
+    const { selectedPage, divisions, divisionsBypage, isFetching } = this.props
     return (
       <Segment basic style={{ backgroundColor: '#F4F8F9', color: '#27292A', minHeight:'100vh' }}>
-        {
-          selectedPage === 'site_plan'
-          ?
-          <div style={{width:'100vw', textAlign:'center', marginTop:38, marginLeft:-15}}>
-            <MediaQuery minDeviceWidth={1224}>
-              <ReactPlayer style={{marginLeft:'-20px'}} width="105%" height="100%" loop url='http://test-bucket-01141993.s3-website-us-east-1.amazonaws.com/ampsight/tech.mp4' playing />
-            </MediaQuery>
-            <MediaQuery maxDeviceWidth={1224}>
-                <Image style={{width:'100%'}} src="https://s3.amazonaws.com/test-bucket-01141993/tech.gif"/>
-            </MediaQuery>
-          </div>
-          :
-          null
-        }
-
-
         <Navbar />
-        {divisions.length > 0 &&
-          <div style={{ opacity: isFetching ? 0.5 : 1, width:'100vw', marginLeft:-15 }}>
-            <Divisions divisions={[]} userToken={this.state.userToken} />
-          </div>}
+          {divisions.length > 0 &&
+            <div style={{ opacity: isFetching ? 0.5 : 1, width:'100vw', marginLeft:-15}}>
+              <Divisions style={{width:'100vw'}} divisions={divisions} divisionsBypage={divisionsBypage} userToken={this.state.userToken} style={{width:'100vw'}} />
+            </div>}
         </Segment>
     )
   }
@@ -141,6 +125,7 @@ function mapStateToProps(state) {
 
   return {
     selectedPage,
+    divisionsBypage,
     divisions,
     navItems,
     isFetching,

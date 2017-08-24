@@ -5,7 +5,7 @@ export async function main(event, context, callback) {
   console.log('event _____', event);
   console.log('context _____ ', context);
   const params = {
-    TableName: 'ampsight',
+    TableName: event.queryStringParameters.TableName,
     KeyConditionExpression: "pageId = :pageId",
     ExpressionAttributeValues: {
       ":pageId": event.queryStringParameters.pageId,
@@ -20,6 +20,7 @@ export async function main(event, context, callback) {
     callback(null, success(result.Items));
   }
   catch(e) {
+    console.log('error  ---->', e)
     callback(null, failure({status: false}));
   }
 };

@@ -42,6 +42,7 @@ export default class Divisions extends Component {
       }
     })
     this.setState({divisionsOrderObject})
+
     this.setState({divisions})
   }
 
@@ -158,7 +159,7 @@ export default class Divisions extends Component {
                   {
                     division.sections.header1
                     ?
-                    <Grid divided columns='equal' style={{boxShadow: 'none',  width: '100vw',  textAlign:'center'}} >
+                    <Grid divided columns='equal' style={{boxShadow: 'none',  width: '100vw',  textAlign:'center', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
                         <h1 id={division.sections.header1 || null} style={{fontSize:"3rem", textAlign:'center'}}>{division.sections.header1 || null}</h1>
                       </Grid.Column>
@@ -169,7 +170,7 @@ export default class Divisions extends Component {
                   {
                     division.sections.header2
                     ?
-                    <Grid divided style={{boxShadow: 'none', width: '100vw'}} >
+                    <Grid divided style={{boxShadow: 'none', width: '100vw', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
                         <h2 id={division.sections.header2 || null} style={{fontSize:"2rem", textAlign:'center', marginTop:-50}}>{division.sections.header2 || null}</h2>
                       </Grid.Column>
@@ -180,7 +181,7 @@ export default class Divisions extends Component {
                   {
                     division.sections.header3
                     ?
-                    <Grid divided style={{boxShadow: 'none', width: '100vw'}} >
+                    <Grid divided style={{boxShadow: 'none', width: '100vw', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
                         <h3 id={division.sections.header3 || null} style={{fontSize:"1rem", textAlign:'center', marginTop:-50}}>{division.sections.header3 || null}</h3>
                       </Grid.Column>
@@ -279,7 +280,7 @@ export default class Divisions extends Component {
       path: `/posts/${division.id}`,
       method: 'DELETE',
       body: division,
-      queryParams:{'pageId': division.pageId}
+      queryParams:{'pageId': division.pageId, "TableName": process.env.REACT_APP_AppName}
     }, this.props.userToken);
   }
   saveDivision(division) {
@@ -287,7 +288,7 @@ export default class Divisions extends Component {
       path: `/posts/${division.id}`,
       method: 'PUT',
       body: division,
-      queryParams:{'pageId': division.pageId}
+      queryParams:{'pageId': division.pageId, "TableName": process.env.REACT_APP_AppName}
     }, this.props.userToken);
   }
   handlesDeleteClick = async (index, event) => {

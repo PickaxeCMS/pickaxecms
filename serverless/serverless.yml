@@ -94,16 +94,56 @@ functions:
 # The "Resources" your "Functions" use.  Raw AWS CloudFormation goes in here.
 resources:
   Resources:
+    baseUser:
+      Type: AWS::IAM::User
+      Properties:
+        Path: "/"
+        LoginProfile:
+          Password: myP@ssW0rd
+        Policies:
+        - PolicyName: giveaccesstoapi
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action: "*"
+              Sid: "Stmt1503601076880"
+              Resource: "*"
+        - PolicyName: giveaccesstolambda
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action: "*"
+              Sid: "Stmt1503601065969"
+              Resource: "*"
+        - PolicyName: giveaccesstodynamo
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+            - Effect: Allow
+              Action: "*"
+              Sid: "Stmt1503601096544"
+              Resource: "*"
+    baseAccessKey:
+      Type: AWS::IAM::AccessKey
+      Properties:
+        UserName:
+          Ref: baseUser
     appTable:
       Type: AWS::DynamoDB::Table
       Properties:
         TableName: ${env:APP_NAME}
         AttributeDefinitions:
           - AttributeName: pageId
-            AttributeType: S
-        KeySchema:
+            AttributeType: "S"
           - AttributeName: id
-            KeyType: S
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: pageId
+            KeyType: HASH
+          - AttributeName: id
+            KeyType: RANGE
         ProvisionedThroughput:
           ReadCapacityUnits: 10
           WriteCapacityUnits: 10
@@ -111,17 +151,98 @@ resources:
       Type: AWS::S3::Bucket
       Properties:
         AccessControl: PublicRead
-        BucketName: ${env:APP_NAME}-client
         WebsiteConfiguration:
           IndexDocument: index.html
           ErrorDocument: index.html
       DeletionPolicy: Retain
-
+    S3Uploads:
+      Type: AWS::S3::Bucket
+      Properties:
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: index.html
+      DeletionPolicy: Retain
+    ClientBucketPolicy:
+      Type: "AWS::S3::BucketPolicy"
+      Properties:
+        Bucket:
+          Ref: S3Client
+        PolicyDocument:
+          Statement:
+            -
+              Sid: "PublicReadForGetBucketObjects"
+              Action: "s3:GetObject"
+              Effect: "Allow"
+              Resource:
+                "Fn::Join": ["", ["arn:aws:s3:::", Ref: S3Client, "/*"]]
+              Principal: "*"
+    userPool:
+      Type: "AWS::Cognito::UserPool"
+      Properties:
+        UserPoolName: ${env:APP_NAME}-user-pool
+    userPoolAppClient:
+      Type: "AWS::Cognito::UserPoolClient"
+      Properties:
+          ClientName: ${env:APP_NAME}-app,
+          ExplicitAuthFlows:
+            - ADMIN_NO_SRP_AUTH
+          GenerateSecret: false
+          RefreshTokenValidity: 30
+          UserPoolId:
+            Ref: userPool
+    identityPool:
+      Type: "AWS::Cognito::IdentityPool"
+      Properties:
+        IdentityPoolName: ${env:APP_NAME}_identity_pool
+        AllowUnauthenticatedIdentities: true
+        CognitoIdentityProviders:
+        - ClientId:
+            Ref: userPoolAppClient
+          ProviderName:
+            "Fn::GetAtt" : [userPool, ProviderName]
 
   Outputs:
+    AppClientId:
+      Value:
+        Ref: userPoolAppClient
+      Description: App Client Id
+    UserPoolId:
+      Value:
+        Ref: userPool
+      Description: User Pool Id
+    IdentityPoolId:
+      Value:
+        Ref: identityPool
+      Description: Identity Pool Id
+    UserPoolArn:
+      Value:
+        "Fn::GetAtt": [ userPool, Arn ]
+      Description: User Pool ARN
+    K:
+      Value:
+        Ref: baseAccessKey
+      Description: Access Key
+    SAK:
+      Value:
+        "Fn::GetAtt": [ baseAccessKey, SecretAccessKey ]
+      Description: Secret Access Key
     WebsiteURL:
-      Value: !GetAtt [S3Client, WebsiteURL]
+      Value:
+        "Fn::GetAtt": [ S3Client, WebsiteURL]
       Description: URL for ${env:APP_NAME} website hosted on S3
-    S3BucketSecureURL:
-      Value: !Join ['', ['https://', !GetAtt [S3Client, DomainName]]]
+    UploadsBucket:
+      Value:
+        Ref: S3Uploads
+      Description: Bucket name for ${env:APP_NAME} website hosted on S3
+    ClientBucket:
+      Value:
+        Ref: S3Client
+      Description: Bucket name for ${env:APP_NAME} website hosted on S3
+    WebsiteSecureUrl:
+      Value:
+        "Fn::Join": ['', ['https://', "Fn::GetAtt": [ S3Client, DomainName]]]
       Description: Name of ${env:APP_NAME} S3 bucket to hold website content
+    AppName:
+      Value: ${env:APP_NAME}
+      Description: Name of the App

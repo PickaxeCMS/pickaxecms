@@ -102,15 +102,9 @@ class AdminToolbar extends Component {
                       <Dropdown.Item name='newPage' onClick={this.handleNewPageButton}>
                         + New Page
                       </Dropdown.Item>
-                      {
-                        this.props.selectedPage !== 'site_plan'
-                        ?
-                          <Dropdown.Item name='newDivision' onClick={this.handleNewDivisionButton}>
-                            + New Section
-                          </Dropdown.Item>
-                        :
-                        null
-                      }
+                      <Dropdown.Item name='newDivision' onClick={this.handleNewDivisionButton}>
+                        + New Section
+                      </Dropdown.Item>
                       {
                         this.state.activePage
                         ?

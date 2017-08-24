@@ -8,31 +8,31 @@
     "CreateLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/ampsight-serverless-prod-create"
+        "LogGroupName": "/aws/lambda/Test2-serverless-prod-create"
       }
     },
     "GetLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/ampsight-serverless-prod-get"
+        "LogGroupName": "/aws/lambda/Test2-serverless-prod-get"
       }
     },
     "ListLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/ampsight-serverless-prod-list"
+        "LogGroupName": "/aws/lambda/Test2-serverless-prod-list"
       }
     },
     "UpdateLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/ampsight-serverless-prod-update"
+        "LogGroupName": "/aws/lambda/Test2-serverless-prod-update"
       }
     },
     "DeleteLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/ampsight-serverless-prod-delete"
+        "LogGroupName": "/aws/lambda/Test2-serverless-prod-delete"
       }
     },
     "IamRoleLambdaExecution": {
@@ -61,7 +61,7 @@
                 "-",
                 [
                   "prod",
-                  "ampsight-serverless",
+                  "Test2-serverless",
                   "lambda"
                 ]
               ]
@@ -76,19 +76,19 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-create:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-create:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-get:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-get:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-list:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-list:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-update:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-update:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-delete:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-delete:*"
                     }
                   ]
                 },
@@ -99,19 +99,19 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-create:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-create:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-get:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-get:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-list:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-list:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-update:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-update:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/ampsight-serverless-prod-delete:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-delete:*:*"
                     }
                   ]
                 },
@@ -137,7 +137,7 @@
           "Fn::Join": [
             "-",
             [
-              "ampsight-serverless",
+              "Test2-serverless",
               "prod",
               "us-east-1",
               "lambdaRole"
@@ -153,9 +153,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ampsight-serverless/prod/1503113658364-2017-08-19T03:34:18.364Z/ampsight-serverless.zip"
+          "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
         },
-        "FunctionName": "ampsight-serverless-prod-create",
+        "FunctionName": "Test2-serverless-prod-create",
         "Handler": "create.main",
         "MemorySize": 1024,
         "Role": {
@@ -172,14 +172,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE": {
+    "CreateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateLambdaFunction"
         },
-        "CodeSha256": "qZsUZXnEtM+vdpSjdcwgYOFACCzzgWRBAwRh4PH23jE="
+        "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
       }
     },
     "GetLambdaFunction": {
@@ -189,9 +189,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ampsight-serverless/prod/1503113658364-2017-08-19T03:34:18.364Z/ampsight-serverless.zip"
+          "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
         },
-        "FunctionName": "ampsight-serverless-prod-get",
+        "FunctionName": "Test2-serverless-prod-get",
         "Handler": "get.main",
         "MemorySize": 1024,
         "Role": {
@@ -208,14 +208,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE": {
+    "GetLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetLambdaFunction"
         },
-        "CodeSha256": "qZsUZXnEtM+vdpSjdcwgYOFACCzzgWRBAwRh4PH23jE="
+        "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
       }
     },
     "ListLambdaFunction": {
@@ -225,9 +225,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ampsight-serverless/prod/1503113658364-2017-08-19T03:34:18.364Z/ampsight-serverless.zip"
+          "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
         },
-        "FunctionName": "ampsight-serverless-prod-list",
+        "FunctionName": "Test2-serverless-prod-list",
         "Handler": "list.main",
         "MemorySize": 1024,
         "Role": {
@@ -244,14 +244,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "ListLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE": {
+    "ListLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ListLambdaFunction"
         },
-        "CodeSha256": "qZsUZXnEtM+vdpSjdcwgYOFACCzzgWRBAwRh4PH23jE="
+        "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
       }
     },
     "UpdateLambdaFunction": {
@@ -261,9 +261,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ampsight-serverless/prod/1503113658364-2017-08-19T03:34:18.364Z/ampsight-serverless.zip"
+          "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
         },
-        "FunctionName": "ampsight-serverless-prod-update",
+        "FunctionName": "Test2-serverless-prod-update",
         "Handler": "update.main",
         "MemorySize": 1024,
         "Role": {
@@ -280,14 +280,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "UpdateLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE": {
+    "UpdateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateLambdaFunction"
         },
-        "CodeSha256": "qZsUZXnEtM+vdpSjdcwgYOFACCzzgWRBAwRh4PH23jE="
+        "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
       }
     },
     "DeleteLambdaFunction": {
@@ -297,9 +297,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/ampsight-serverless/prod/1503113658364-2017-08-19T03:34:18.364Z/ampsight-serverless.zip"
+          "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
         },
-        "FunctionName": "ampsight-serverless-prod-delete",
+        "FunctionName": "Test2-serverless-prod-delete",
         "Handler": "delete.main",
         "MemorySize": 1024,
         "Role": {
@@ -316,20 +316,20 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "DeleteLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE": {
+    "DeleteLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteLambdaFunction"
         },
-        "CodeSha256": "qZsUZXnEtM+vdpSjdcwgYOFACCzzgWRBAwRh4PH23jE="
+        "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "prod-ampsight-serverless"
+        "Name": "prod-Test2-serverless"
       }
     },
     "ApiGatewayResourcePosts": {
@@ -641,7 +641,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1503113658400": {
+    "ApiGatewayDeployment1503616394637": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -821,6 +821,189 @@
           ]
         }
       }
+    },
+    "baseUser": {
+      "Type": "AWS::IAM::User",
+      "Properties": {
+        "Path": "/",
+        "LoginProfile": {
+          "Password": "myP@ssW0rd"
+        },
+        "Policies": [
+          {
+            "PolicyName": "giveaccesstoapi",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "*",
+                  "Sid": "Stmt1503601076880",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "giveaccesstolambda",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "*",
+                  "Sid": "Stmt1503601065969",
+                  "Resource": "*"
+                }
+              ]
+            }
+          },
+          {
+            "PolicyName": "giveaccesstodynamo",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": "*",
+                  "Sid": "Stmt1503601096544",
+                  "Resource": "*"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "baseAccessKey": {
+      "Type": "AWS::IAM::AccessKey",
+      "Properties": {
+        "UserName": {
+          "Ref": "baseUser"
+        }
+      }
+    },
+    "appTable": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "TableName": "Test2",
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "pageId",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "id",
+            "AttributeType": "S"
+          }
+        ],
+        "KeySchema": [
+          {
+            "AttributeName": "pageId",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "id",
+            "KeyType": "RANGE"
+          }
+        ],
+        "ProvisionedThroughput": {
+          "ReadCapacityUnits": 10,
+          "WriteCapacityUnits": 10
+        }
+      }
+    },
+    "S3Client": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "PublicRead",
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "index.html"
+        }
+      },
+      "DeletionPolicy": "Retain"
+    },
+    "S3Uploads": {
+      "Type": "AWS::S3::Bucket",
+      "Properties": {
+        "AccessControl": "PublicRead",
+        "WebsiteConfiguration": {
+          "IndexDocument": "index.html",
+          "ErrorDocument": "index.html"
+        }
+      },
+      "DeletionPolicy": "Retain"
+    },
+    "ClientBucketPolicy": {
+      "Type": "AWS::S3::BucketPolicy",
+      "Properties": {
+        "Bucket": {
+          "Ref": "S3Client"
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Sid": "PublicReadForGetBucketObjects",
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:aws:s3:::",
+                    {
+                      "Ref": "S3Client"
+                    },
+                    "/*"
+                  ]
+                ]
+              },
+              "Principal": "*"
+            }
+          ]
+        }
+      }
+    },
+    "userPool": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "UserPoolName": "Test2-user-pool"
+      }
+    },
+    "userPoolAppClient": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "Properties": {
+        "ClientName": "Test2-app,",
+        "ExplicitAuthFlows": [
+          "ADMIN_NO_SRP_AUTH"
+        ],
+        "GenerateSecret": false,
+        "RefreshTokenValidity": 30,
+        "UserPoolId": {
+          "Ref": "userPool"
+        }
+      }
+    },
+    "identityPool": {
+      "Type": "AWS::Cognito::IdentityPool",
+      "Properties": {
+        "IdentityPoolName": "Test2_identity_pool",
+        "AllowUnauthenticatedIdentities": true,
+        "CognitoIdentityProviders": [
+          {
+            "ClientId": {
+              "Ref": "userPoolAppClient"
+            },
+            "ProviderName": {
+              "Fn::GetAtt": [
+                "userPool",
+                "ProviderName"
+              ]
+            }
+          }
+        ]
+      }
     }
   },
   "Outputs": {
@@ -832,31 +1015,31 @@
     "CreateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE"
+        "Ref": "CreateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
       }
     },
     "GetLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE"
+        "Ref": "GetLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
       }
     },
     "ListLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ListLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE"
+        "Ref": "ListLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
       }
     },
     "UpdateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE"
+        "Ref": "UpdateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
       }
     },
     "DeleteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteLambdaVersionqZsUZXnEtMvdpSjdcwgYOFACCzzgWRBAwRh4PH23jE"
+        "Ref": "DeleteLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
       }
     },
     "ServiceEndpoint": {
@@ -873,6 +1056,90 @@
           ]
         ]
       }
+    },
+    "AppClientId": {
+      "Value": {
+        "Ref": "userPoolAppClient"
+      },
+      "Description": "App Client Id"
+    },
+    "UserPoolId": {
+      "Value": {
+        "Ref": "userPool"
+      },
+      "Description": "User Pool Id"
+    },
+    "IdentityPoolId": {
+      "Value": {
+        "Ref": "identityPool"
+      },
+      "Description": "Identity Pool Id"
+    },
+    "UserPoolArn": {
+      "Value": {
+        "Fn::GetAtt": [
+          "userPool",
+          "Arn"
+        ]
+      },
+      "Description": "User Pool ARN"
+    },
+    "K": {
+      "Value": {
+        "Ref": "baseAccessKey"
+      },
+      "Description": "Access Key"
+    },
+    "SAK": {
+      "Value": {
+        "Fn::GetAtt": [
+          "baseAccessKey",
+          "SecretAccessKey"
+        ]
+      },
+      "Description": "Secret Access Key"
+    },
+    "WebsiteURL": {
+      "Value": {
+        "Fn::GetAtt": [
+          "S3Client",
+          "WebsiteURL"
+        ]
+      },
+      "Description": "URL for Test2 website hosted on S3"
+    },
+    "UploadsBucket": {
+      "Value": {
+        "Ref": "S3Uploads"
+      },
+      "Description": "Bucket name for Test2 website hosted on S3"
+    },
+    "ClientBucket": {
+      "Value": {
+        "Ref": "S3Client"
+      },
+      "Description": "Bucket name for Test2 website hosted on S3"
+    },
+    "WebsiteSecureUrl": {
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            {
+              "Fn::GetAtt": [
+                "S3Client",
+                "DomainName"
+              ]
+            }
+          ]
+        ]
+      },
+      "Description": "Name of Test2 S3 bucket to hold website content"
+    },
+    "AppName": {
+      "Value": "Test2",
+      "Description": "Name of the App"
     }
   }
 }
