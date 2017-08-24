@@ -21,7 +21,7 @@ NPM
 (NPM be downloaded <a href="https://docs.npmjs.com/getting-started/installing-node">here</a>)
 
 Serverless Framework    
-`# Installing the serverless cli          
+`     
 npm install -g serverless`
 
 ## Installation & Usage
