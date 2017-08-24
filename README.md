@@ -1,7 +1,7 @@
 <!-- Logo -->
 <p align="center">
-  <a href="https://react.semantic-ui.com">
-    <img height="128" width="128" src="https://github.com/PickaxeCMS/pickaxecms/blob/master/pickaxeLogo.png">
+  <a href="">
+    <img height="128" width="128" src="https://github.com/PickaxeCMS/pickaxecms/blob/master/pickaxe.png">
   </a>
 </p>
 
