@@ -10,6 +10,8 @@
   <a>Pickaxe CMS</a>
 </h1>
 
+Pickaxe CMS is a free open source content management server for Amazon Web Services.
+
 ## Dependencies    
 
 ### [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
