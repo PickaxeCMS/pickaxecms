@@ -41,15 +41,15 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
          
 #### If this is your first time running Pickaxe, run this:            
         
-`$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
+`$  ./initialBuild.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
         
          
 Example:      
-`$    ./firstTime.sh SuperCoolApp us-east-1`    
+`$    ./initialBuild.sh SuperCoolApp us-east-1`    
        
         
 NOTE: If there is an output of Permission Denied, run:     
-`$  chmod +x ./firstTime.sh`     
+`$  chmod +x ./initialBuild.sh`     
       
        
 #### To just run the development server:      
@@ -60,6 +60,6 @@ NOTE: This will only work if you have run firstTime.sh to build out the backend.
     
 #### To run a production build:      
        
-`$  ./build.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`     
+`$  ./production.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`     
 NOTE: This will only work if you have run firstTime.sh to build out the backend.
       
