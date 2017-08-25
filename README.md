@@ -41,7 +41,10 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 `$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
        
 example:      
-`$    ./firstTime.sh SuperCoolApp us-east-1`
+`$    ./firstTime.sh SuperCoolApp us-east-1`    
+      
+NOTE: If there is an output of Permission Denied, run:     
+`$  chmod +x ./firstTime.sh`     
       
        
 #### To just run the development server:      
