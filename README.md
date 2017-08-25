@@ -20,7 +20,7 @@ Hey, we're in development.
 ### jq         
 (jq be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)     
         
-Serverless Framework    
+### Serverless Framework    
 `     
 npm install -g serverless`     
   
