@@ -14,7 +14,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 # Install All Dependencies
 npm install
 
-
+cd ../serverless
 # Deploy the app using Serverless
 APP_NAME="$STACK" serverless deploy --verbose SLS_DEBUG=*
 
