@@ -14,14 +14,22 @@ Hey, we're in development.
 
 ## Dependencies    
 
-### NPM     
-(NPM be downloaded <a href="https://docs.npmjs.com/getting-started/installing-node">here</a>)
+### [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
+
+Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient.
+
+NPM is a package manager for JavaScript.
+
+[Install Node.js and update npm](https://docs.npmjs.com/getting-started/installing-node)
+
+
+
 
 ### [jq](https://stedolan.github.io/jq/)
 
 **jq** is a lightweight and flexible command-line JSON processor.
 
-[How to install jq](https://stedolan.github.io/jq/download/).     
+[Install jq](https://stedolan.github.io/jq/download/).     
         
 ### Serverless Framework    
 `     
@@ -31,7 +39,7 @@ $  npm install -g serverless`
 
 The AWS CLI provides commands for interacting with AWS services
 
-[How to install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+[Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 
 Make sure aws-cli is configured using correct credentials.    
 If not, run:      
