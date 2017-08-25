@@ -36,17 +36,11 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
 ## Installation & Usage
 
-In / and /serverless     
+If this is your first time running Pickaxe,   
 `
-npm install
-`      
-     
-     
-      
-To run development server      
-`
-npm start
-` 
+./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>
+`     
+example: `./firstTime.sh SuperCoolApp us-east-1'
       
 
 ## IN PROGRESS     
