@@ -21,7 +21,7 @@ Hey, we're in development.
 
 **jq** is a lightweight and flexible command-line JSON processor.
 
-[How to install jq].(https://stedolan.github.io/jq/download/)     
+[How to install jq](https://stedolan.github.io/jq/download/).     
         
 ### Serverless Framework    
 `     
