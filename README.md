@@ -10,8 +10,6 @@
   <a>Pickaxe CMS</a>
 </h1>
 
-Hey, we're in development.
-
 ## Dependencies    
 
 ### [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
