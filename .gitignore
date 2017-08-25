@@ -29,6 +29,9 @@ build
 # Bower dependency directory (https://bower.io/)
 bower_components
 
+# Serverless Build Directory
+serverless/.serverless
+
 # node-waf configuration
 .lock-wscript
 
