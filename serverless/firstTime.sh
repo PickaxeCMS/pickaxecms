@@ -1,5 +1,5 @@
 # Setting the script to error out and stop if any single statement exits non-0.
-# set -e;
+set -e;
 
 # Then we can do something like:
 #     $ ./example.sh TestStack us-west-2;
@@ -39,10 +39,6 @@ user=$(aws cognito-idp admin-get-user \
   --username admin@example.com \
   --user-pool-id $REACT_APP_UserPoolId)
 
-
-
-echo $user
-
 if [[ $(aws cognito-idp admin-get-user \
   --username admin@example.com \
   --user-pool-id $REACT_APP_UserPoolId) ]]; then
@@ -59,6 +55,8 @@ if [[ -z "$user" ]]; then
     --user-pool-id $REACT_APP_UserPoolId \
     --username admin@example.com
   fi
+
+  
 # Change directory to react app
 cd ../src
 # and confirm correct directory
