@@ -16,9 +16,9 @@ Hey, we're in development.
 
 ### [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
 
-Node.js® is a lightweight and efficient JavaScript runtime that uses an event-driven, non-blocking I/O model.
+**Node.js** is a lightweight and efficient JavaScript runtime that uses an event-driven, non-blocking I/O model.
 
-NPM is a package manager for JavaScript.
+**NPM** is a package manager for JavaScript.
 
 + [Install Node.js and update npm](https://docs.npmjs.com/getting-started/installing-node)
 
@@ -27,14 +27,16 @@ NPM is a package manager for JavaScript.
 
 **jq** is a lightweight and flexible command-line JSON processor.
 
-+ [Install jq](https://stedolan.github.io/jq/download/).     
-        
++ [Install jq](https://stedolan.github.io/jq/download/)
+
+
 ### [Serverless Framework](https://serverless.com/framework/)
 
 **Serverless Framework** is a CLI for building serverless architectures on AWS.
 
-+ [Install serverless CLI](https://serverless.com/framework/docs/getting-started/) 
-  
++ [Install serverless CLI](https://serverless.com/framework/docs/getting-started/)
+
+
 ### [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
 
 The AWS CLI provides commands for interacting with Amazon Web Services.
@@ -54,7 +56,7 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
        
          
-#### If this is your first time running Pickaxe, run this:            
+#### If this is your first time running Pickaxe, start with this:            
         
 `$  ./initialBuild.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
         
