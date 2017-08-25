@@ -26,7 +26,7 @@ fi
 
 
 # Change directory to react app
-cd ../src
+cd ./src
 # and confirm correct directory
 pwd
 

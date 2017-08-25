@@ -25,8 +25,6 @@ if [[ "$stack_info" =~ "OutputKey" ]]; then
 fi
 
 
-# Change directory to where /build directory will be located
-cd ../
 
 # and confirm correct directory
 pwd
