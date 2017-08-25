@@ -182,7 +182,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
+                "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
               },
               "FunctionName": "Test2-serverless-prod-create",
               "Handler": "create.main",
@@ -201,14 +201,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "CreateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
+          "CreateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "CreateLambdaFunction"
               },
-              "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
+              "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
             }
           },
           "GetLambdaFunction": {
@@ -218,7 +218,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
+                "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
               },
               "FunctionName": "Test2-serverless-prod-get",
               "Handler": "get.main",
@@ -237,14 +237,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
+          "GetLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetLambdaFunction"
               },
-              "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
+              "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
             }
           },
           "ListLambdaFunction": {
@@ -254,7 +254,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
+                "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
               },
               "FunctionName": "Test2-serverless-prod-list",
               "Handler": "list.main",
@@ -273,14 +273,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "ListLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
+          "ListLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ListLambdaFunction"
               },
-              "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
+              "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
             }
           },
           "UpdateLambdaFunction": {
@@ -290,7 +290,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
+                "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
               },
               "FunctionName": "Test2-serverless-prod-update",
               "Handler": "update.main",
@@ -309,14 +309,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "UpdateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
+          "UpdateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "UpdateLambdaFunction"
               },
-              "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
+              "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
             }
           },
           "DeleteLambdaFunction": {
@@ -326,7 +326,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z/Test2-serverless.zip"
+                "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
               },
               "FunctionName": "Test2-serverless-prod-delete",
               "Handler": "delete.main",
@@ -345,14 +345,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "DeleteLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg": {
+          "DeleteLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "DeleteLambdaFunction"
               },
-              "CodeSha256": "C/ce2swGxMuqjm/JQzlSh6tLp0Pdot4SzOiUHqfbUbg="
+              "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
             }
           },
           "ApiGatewayRestApi": {
@@ -670,7 +670,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1503616394637": {
+          "ApiGatewayDeployment1503619552845": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -1044,31 +1044,31 @@
           "CreateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
+              "Ref": "CreateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
             }
           },
           "GetLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
+              "Ref": "GetLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
             }
           },
           "ListLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ListLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
+              "Ref": "ListLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
             }
           },
           "UpdateLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "UpdateLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
+              "Ref": "UpdateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
             }
           },
           "DeleteLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "DeleteLambdaVersionCce2swGxMuqjmJQzlSh6tLp0Pdot4SzOiUHqfbUbg"
+              "Ref": "DeleteLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
             }
           },
           "ServiceEndpoint": {
@@ -1664,7 +1664,7 @@
     "artifact": "/Users/stephanierobison/pickaxecms/serverless/.webpack/.serverless/Test2-serverless.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/Test2-serverless/prod/1503616394600-2017-08-24T23:13:14.600Z",
+    "artifactDirectoryName": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z",
     "artifact": "Test2-serverless.zip"
   }
 }

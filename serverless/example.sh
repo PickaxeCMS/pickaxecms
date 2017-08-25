@@ -1,5 +1,5 @@
 # Setting the script to error out and stop if any single statement exits non-0.
-set -e;
+# set -e;
 
 # Then we can do something like:
 #     $ ./example.sh TestStack us-west-2;
@@ -12,7 +12,7 @@ export REACT_APP_AWS_REGION=$2;
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
 #
 # Deploy the app using Serverless
-APP_NAME="$STACK" serverless deploy --verbose SLS_DEBUG=true
+APP_NAME="$STACK" serverless deploy --verbose SLS_DEBUG=*
 
 # Retrieve all outputs from the stack and set them as environment variables
 stack_info=$(aws cloudformation describe-stacks --region $REACT_APP_AWS_REGION --stack-name $STACKNAME --output json)
@@ -31,7 +31,9 @@ fi
 aws dynamodb put-item --table-name $REACT_APP_AppName --item file://site_plan.json
 aws dynamodb put-item --table-name $REACT_APP_AppName --item file://initial_division.json
 
-
+aws s3api put-bucket-cors \
+  --bucket $REACT_APP_UploadsBucket \
+  --cors-configuration file://bucketCors.json
 
 user=$(aws cognito-idp admin-get-user \
   --username admin@example.com \
@@ -41,7 +43,9 @@ user=$(aws cognito-idp admin-get-user \
 
 echo $user
 
-if [[ -z "$user" ]]; then
+if [[ $(aws cognito-idp admin-get-user \
+  --username admin@example.com \
+  --user-pool-id $REACT_APP_UserPoolId) ]]; then
   aws cognito-idp sign-up \
     --region $REACT_APP_AWS_REGION \
     --client-id $REACT_APP_AppClientId\
