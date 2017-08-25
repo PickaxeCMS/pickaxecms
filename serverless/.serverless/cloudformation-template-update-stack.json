@@ -8,31 +8,31 @@
     "CreateLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/Test2-serverless-prod-create"
+        "LogGroupName": "/aws/lambda/SuperCoolApp-serverless-prod-create"
       }
     },
     "GetLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/Test2-serverless-prod-get"
+        "LogGroupName": "/aws/lambda/SuperCoolApp-serverless-prod-get"
       }
     },
     "ListLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/Test2-serverless-prod-list"
+        "LogGroupName": "/aws/lambda/SuperCoolApp-serverless-prod-list"
       }
     },
     "UpdateLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/Test2-serverless-prod-update"
+        "LogGroupName": "/aws/lambda/SuperCoolApp-serverless-prod-update"
       }
     },
     "DeleteLogGroup": {
       "Type": "AWS::Logs::LogGroup",
       "Properties": {
-        "LogGroupName": "/aws/lambda/Test2-serverless-prod-delete"
+        "LogGroupName": "/aws/lambda/SuperCoolApp-serverless-prod-delete"
       }
     },
     "IamRoleLambdaExecution": {
@@ -61,7 +61,7 @@
                 "-",
                 [
                   "prod",
-                  "Test2-serverless",
+                  "SuperCoolApp-serverless",
                   "lambda"
                 ]
               ]
@@ -76,19 +76,19 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-create:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-create:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-get:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-get:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-list:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-list:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-update:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-update:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-delete:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-delete:*"
                     }
                   ]
                 },
@@ -99,19 +99,19 @@
                   ],
                   "Resource": [
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-create:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-create:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-get:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-get:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-list:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-list:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-update:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-update:*:*"
                     },
                     {
-                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/Test2-serverless-prod-delete:*:*"
+                      "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/SuperCoolApp-serverless-prod-delete:*:*"
                     }
                   ]
                 },
@@ -137,7 +137,7 @@
           "Fn::Join": [
             "-",
             [
-              "Test2-serverless",
+              "SuperCoolApp-serverless",
               "prod",
               "us-east-1",
               "lambdaRole"
@@ -153,9 +153,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
+          "S3Key": "serverless/SuperCoolApp-serverless/prod/1503621798771-2017-08-25T00:43:18.771Z/SuperCoolApp-serverless.zip"
         },
-        "FunctionName": "Test2-serverless-prod-create",
+        "FunctionName": "SuperCoolApp-serverless-prod-create",
         "Handler": "create.main",
         "MemorySize": 1024,
         "Role": {
@@ -172,14 +172,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "CreateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
+    "CreateLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "CreateLambdaFunction"
         },
-        "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
+        "CodeSha256": "URGBhwhxUO5L+BsdnN94GLz0colrg0ODfuSh/aKaw/M="
       }
     },
     "GetLambdaFunction": {
@@ -189,9 +189,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
+          "S3Key": "serverless/SuperCoolApp-serverless/prod/1503621798771-2017-08-25T00:43:18.771Z/SuperCoolApp-serverless.zip"
         },
-        "FunctionName": "Test2-serverless-prod-get",
+        "FunctionName": "SuperCoolApp-serverless-prod-get",
         "Handler": "get.main",
         "MemorySize": 1024,
         "Role": {
@@ -208,14 +208,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "GetLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
+    "GetLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "GetLambdaFunction"
         },
-        "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
+        "CodeSha256": "URGBhwhxUO5L+BsdnN94GLz0colrg0ODfuSh/aKaw/M="
       }
     },
     "ListLambdaFunction": {
@@ -225,9 +225,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
+          "S3Key": "serverless/SuperCoolApp-serverless/prod/1503621798771-2017-08-25T00:43:18.771Z/SuperCoolApp-serverless.zip"
         },
-        "FunctionName": "Test2-serverless-prod-list",
+        "FunctionName": "SuperCoolApp-serverless-prod-list",
         "Handler": "list.main",
         "MemorySize": 1024,
         "Role": {
@@ -244,14 +244,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "ListLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
+    "ListLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ListLambdaFunction"
         },
-        "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
+        "CodeSha256": "URGBhwhxUO5L+BsdnN94GLz0colrg0ODfuSh/aKaw/M="
       }
     },
     "UpdateLambdaFunction": {
@@ -261,9 +261,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
+          "S3Key": "serverless/SuperCoolApp-serverless/prod/1503621798771-2017-08-25T00:43:18.771Z/SuperCoolApp-serverless.zip"
         },
-        "FunctionName": "Test2-serverless-prod-update",
+        "FunctionName": "SuperCoolApp-serverless-prod-update",
         "Handler": "update.main",
         "MemorySize": 1024,
         "Role": {
@@ -280,14 +280,14 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "UpdateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
+    "UpdateLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "UpdateLambdaFunction"
         },
-        "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
+        "CodeSha256": "URGBhwhxUO5L+BsdnN94GLz0colrg0ODfuSh/aKaw/M="
       }
     },
     "DeleteLambdaFunction": {
@@ -297,9 +297,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/Test2-serverless/prod/1503619552794-2017-08-25T00:05:52.794Z/Test2-serverless.zip"
+          "S3Key": "serverless/SuperCoolApp-serverless/prod/1503621798771-2017-08-25T00:43:18.771Z/SuperCoolApp-serverless.zip"
         },
-        "FunctionName": "Test2-serverless-prod-delete",
+        "FunctionName": "SuperCoolApp-serverless-prod-delete",
         "Handler": "delete.main",
         "MemorySize": 1024,
         "Role": {
@@ -316,20 +316,20 @@
         "IamRoleLambdaExecution"
       ]
     },
-    "DeleteLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc": {
+    "DeleteLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "DeleteLambdaFunction"
         },
-        "CodeSha256": "HYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc="
+        "CodeSha256": "URGBhwhxUO5L+BsdnN94GLz0colrg0ODfuSh/aKaw/M="
       }
     },
     "ApiGatewayRestApi": {
       "Type": "AWS::ApiGateway::RestApi",
       "Properties": {
-        "Name": "prod-Test2-serverless"
+        "Name": "prod-SuperCoolApp-serverless"
       }
     },
     "ApiGatewayResourcePosts": {
@@ -641,7 +641,7 @@
         "MethodResponses": []
       }
     },
-    "ApiGatewayDeployment1503619552845": {
+    "ApiGatewayDeployment1503621798809": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -886,7 +886,7 @@
     "appTable": {
       "Type": "AWS::DynamoDB::Table",
       "Properties": {
-        "TableName": "Test2",
+        "TableName": "SuperCoolApp",
         "AttributeDefinitions": [
           {
             "AttributeName": "pageId",
@@ -968,13 +968,13 @@
     "userPool": {
       "Type": "AWS::Cognito::UserPool",
       "Properties": {
-        "UserPoolName": "Test2-user-pool"
+        "UserPoolName": "SuperCoolApp-user-pool"
       }
     },
     "userPoolAppClient": {
       "Type": "AWS::Cognito::UserPoolClient",
       "Properties": {
-        "ClientName": "Test2-app,",
+        "ClientName": "SuperCoolApp-app,",
         "ExplicitAuthFlows": [
           "ADMIN_NO_SRP_AUTH"
         ],
@@ -988,7 +988,7 @@
     "identityPool": {
       "Type": "AWS::Cognito::IdentityPool",
       "Properties": {
-        "IdentityPoolName": "Test2_identity_pool",
+        "IdentityPoolName": "SuperCoolApp_identity_pool",
         "AllowUnauthenticatedIdentities": true,
         "CognitoIdentityProviders": [
           {
@@ -1015,31 +1015,31 @@
     "CreateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "CreateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
+        "Ref": "CreateLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM"
       }
     },
     "GetLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "GetLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
+        "Ref": "GetLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM"
       }
     },
     "ListLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ListLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
+        "Ref": "ListLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM"
       }
     },
     "UpdateLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "UpdateLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
+        "Ref": "UpdateLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM"
       }
     },
     "DeleteLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "DeleteLambdaVersionHYg4ZTI0sHEkh5qgulAtAaHZEW1413DTVqHsOFtI2Yc"
+        "Ref": "DeleteLambdaVersionURGBhwhxUO5LBsdnN94GLz0colrg0ODfuShaKawM"
       }
     },
     "ServiceEndpoint": {
@@ -1106,19 +1106,19 @@
           "WebsiteURL"
         ]
       },
-      "Description": "URL for Test2 website hosted on S3"
+      "Description": "URL for SuperCoolApp website hosted on S3"
     },
     "UploadsBucket": {
       "Value": {
         "Ref": "S3Uploads"
       },
-      "Description": "Bucket name for Test2 website hosted on S3"
+      "Description": "Bucket name for SuperCoolApp website hosted on S3"
     },
     "ClientBucket": {
       "Value": {
         "Ref": "S3Client"
       },
-      "Description": "Bucket name for Test2 website hosted on S3"
+      "Description": "Bucket name for SuperCoolApp website hosted on S3"
     },
     "WebsiteSecureUrl": {
       "Value": {
@@ -1135,10 +1135,10 @@
           ]
         ]
       },
-      "Description": "Name of Test2 S3 bucket to hold website content"
+      "Description": "Name of SuperCoolApp S3 bucket to hold website content"
     },
     "AppName": {
-      "Value": "Test2",
+      "Value": "SuperCoolApp",
       "Description": "Name of the App"
     }
   }
