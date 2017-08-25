@@ -37,10 +37,11 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 ## Installation & Usage
 
 If this is your first time running Pickaxe, run this:            
-     `
-$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>
-      `     
-example: `./firstTime.sh SuperCoolApp us-east-1'
+        
+`$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
+       
+example:      
+`$    ./firstTime.sh SuperCoolApp us-east-1'
       
 
 ## IN PROGRESS     
