@@ -27,7 +27,12 @@ Hey, we're in development.
 `     
 $  npm install -g serverless`     
   
-### AWS Cli      
+### [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+
+The AWS CLI provides commands for interacting with AWS services
+
+[How to install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+
 Make sure aws-cli is configured using correct credentials.    
 If not, run:      
 `
