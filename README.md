@@ -36,13 +36,18 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
 ## Installation & Usage
 
+`$  cd /serverless`     
+       
+         
 #### If this is your first time running Pickaxe, run this:            
         
 `$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
-       
-example:      
+        
+         
+Example:      
 `$    ./firstTime.sh SuperCoolApp us-east-1`    
-      
+       
+        
 NOTE: If there is an output of Permission Denied, run:     
 `$  chmod +x ./firstTime.sh`     
       
