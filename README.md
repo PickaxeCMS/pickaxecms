@@ -36,13 +36,22 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
 ## Installation & Usage
 
-If this is your first time running Pickaxe, run this:            
+#### If this is your first time running Pickaxe, run this:            
         
 `$  ./firstTime.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
        
 example:      
-`$    ./firstTime.sh SuperCoolApp us-east-1'
+`$    ./firstTime.sh SuperCoolApp us-east-1`
       
-
-## IN PROGRESS     
-... Will be updated shortly ...
+       
+#### To just run the development server:      
+       
+`$  ./development.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`     
+NOTE: This will only work if you have run firstTime.sh to build out the backend.
+      
+    
+#### To run a production build:      
+       
+`$  ./build.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`     
+NOTE: This will only work if you have run firstTime.sh to build out the backend.
+      
