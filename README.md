@@ -17,8 +17,11 @@ Hey, we're in development.
 ### NPM     
 (NPM be downloaded <a href="https://docs.npmjs.com/getting-started/installing-node">here</a>)
 
-### jq         
-(jq be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)     
+### [jq](https://stedolan.github.io/jq/)
+
+**jq** is a lightweight and flexible command-line JSON processor.
+
+[How to install jq].(https://stedolan.github.io/jq/download/)     
         
 ### Serverless Framework    
 `     
