@@ -36,7 +36,7 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
 ## Installation & Usage
 
-`$  cd /serverless`     
+`$  cd serverless`     
        
          
 #### If this is your first time running Pickaxe, run this:            
