@@ -41,7 +41,7 @@ Hey, we're in development.
 
 The AWS CLI provides commands for interacting with Amazon Web Services.
 
-+ [Install the AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
++ [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
 
 Make sure aws-cli is configured using correct credentials.    
 If not, run:      
