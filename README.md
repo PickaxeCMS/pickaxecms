@@ -1,7 +1,7 @@
 <!-- Logo -->
 <p align="center">
   <a href="">
-    <img height="128" width="128" src="https://github.com/PickaxeCMS/pickaxecms/blob/master/pickaxe.png">
+    <img height="128" width="128" src="https://github.com/PickaxeCMS/pickaxecms/blob/master/logo.png">
   </a>
 </p>
 
