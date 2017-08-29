@@ -67,23 +67,88 @@ export async function invokeApig(
   if (results.status !== 200) {
     throw new Error(await results.text());
   }
+  console.log('JSON ++++++++', results)
   return results.json();
 }
 
-export async function s3Upload(file, userToken) {
-  // await getAwsCredentials(userToken);
-  await assumeRole();
-  const s3 = new AWS.S3({
-    params: {
-      Bucket: config.s3.BUCKET,
-    }
-  });
-  const filename = `${AWS.config.credentials.identityId}-${Date.now()}-${file.name}`;
+var async = require('async');
 
-  return s3.upload({
-    Key: filename,
-    Body: file,
-    ContentType: file.type,
-    ACL: 'public-read',
-  }).promise();
+var Promise = require('promise');
+
+export async function s3Upload(file) {
+  await assumeRole();
+
+  return new Promise((resolve, reject)=>{
+    const s3 = new AWS.S3({
+        params: {
+          Bucket: config.s3.BUCKET,
+        }
+      });
+      var bucketName = config.s3.BUCKET;
+    const fileName = `${Date.now()}-${file.name}`;
+    var fileSizeInBytes = file.size
+
+    if(fileSizeInBytes < (1024*1024*5)) {
+      console.log('Small enough to just upload ')
+
+      return s3.upload({
+          Key: fileName,
+          Body: file,
+          Bucket: bucketName,
+          ContentType: file.type,
+          ACL: 'public-read',
+        }, (err, data)  => {
+          resolve(data);
+          reject(err);
+        });
+    }else{
+      s3.createMultipartUpload({ Bucket: bucketName, Key: fileName, ACL:'public-read' }, (mpErr, multipart) => {
+          if(!mpErr){
+            console.log("multipart created", multipart.UploadId);
+              var fileData  = file
+              var partSize = 1024 * 1024 * 5;
+              var parts = Math.ceil(fileData.size / partSize);
+
+              async.timesSeries(parts, (partNum, next) => {
+
+                var rangeStart = partNum*partSize;
+                // var end = Math.min(rangeStart + partSize, fileData.length);
+
+                console.log("uploading ", fileName, " % ", (partNum/parts).toFixed(2));
+
+                partNum++;
+                async.retry((retryCb) => {
+                  var slice = fileData.slice(rangeStart, rangeStart + partSize);
+                  s3.uploadPart({
+                    Body: slice,
+                    Key: fileName,
+                    Bucket: bucketName,
+                    PartNumber: partNum,
+                    UploadId: multipart.UploadId
+                  }, (err, mData) => {
+                    retryCb(err, mData);
+                  });
+                }, (err, data)  => {
+                  next(err, {ETag: data.ETag, PartNumber: partNum});
+                });
+
+              }, (err, dataPacks) => {
+                return s3.completeMultipartUpload({
+                  Key: fileName,
+                  Bucket: bucketName,
+                  MultipartUpload: {
+                    Parts: dataPacks
+                  },
+                  UploadId: multipart.UploadId
+                }, (err, data)  => {
+                  resolve(data);
+                  reject(err);
+                });
+              });
+          }else{
+            reject(mpErr);
+          }
+        });
+    }
+  })
 }

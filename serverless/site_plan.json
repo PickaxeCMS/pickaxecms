@@ -1,9 +1,27 @@
 {
-    "pageId": {"S": "site_plan"},
-    "id": {"S": "site_plan"},
-    "category": {"S": "page"},
-    "navItems": {"M": {}},
-    "divisionsOrder": {"L": [
-        {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"}
-      ]}
+  "pageId": {
+    "S": "site_plan"
+  },
+  "id": {
+    "S": "site_plan"
+  },
+  "category": {
+    "S": "page"
+  },
+  "navItems": {
+    "M": {}
+  },
+  "siteName": {
+    "S": "Super App Test 1"
+  },
+  "siteLogo": {
+    "S": "https://s3.amazonaws.com/superapptest1-serverless-prod-s3uploads-1o85kgj5yedgp/logo.png"
+  },
+  "divisionsOrder": {
+    "L": [
+      {
+        "S": "3658fdaf-750b-57ae-d5c2-d4568de20234"
+      }
+    ]
+  }
 }

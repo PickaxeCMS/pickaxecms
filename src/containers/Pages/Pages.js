@@ -98,7 +98,9 @@ class Pages extends Component {
       <Segment basic style={{ backgroundColor: '#F4F8F9', color: '#27292A', paddingBottom:50, minHeight:'100vh', width:'100vw' }}>
         <Navbar />
         {isFetching && divisions.length === 0 && <Loader />}
-        {!isFetching && divisionsBypage[selectedPage].items.length === 0 && <h2>Page Not Found</h2>}
+        {
+          !isFetching && divisionsBypage[selectedPage].items.length === 0 && <h2 style={{marginTop:50}}>Page Not Found</h2>
+        }
         {divisions.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1, width:'100vw', marginLeft:-15}}>
             <Divisions style={{width:'100vw'}} divisions={divisions} divisionsBypage={divisionsBypage} userToken={this.state.userToken} style={{width:'100vw'}} />

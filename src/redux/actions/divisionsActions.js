@@ -42,6 +42,8 @@ export function stopEditPage(page) {
 }
 
 function receiveDivisions(page, json) {
+  console.log('JSON_______', json)
+  console.log('page_______', page)
   var divisions = json;
   var navItemsOrderObject = {}
   _.some(divisions, function(o) {
@@ -50,8 +52,6 @@ function receiveDivisions(page, json) {
         navItemsOrderObject = o;
         var navItemsOrderIndex = divisions.indexOf(o)
         divisions.splice(navItemsOrderIndex, 1)
-        // var groups = _.groupBy(divisions, 'id');
-        // divisions = _.map(navItemsOrderObject.navItems, function (i) { if(groups[i]){return groups[i].shift()}; });
       }
     }
   })
@@ -78,7 +78,7 @@ function fetchDivisions(page) {
   return dispatch => {
     dispatch(requestDivisions(page))
     return invokeApig({ path: '/posts', queryParams:{'pageId': page, "TableName": process.env.REACT_APP_AppName} }, '')
-      .then(json => { dispatch(receiveDivisions(page, json))})
+      .then(json => { console.log('JSON', json); dispatch(receiveDivisions(page, json))})
   }
 }
 

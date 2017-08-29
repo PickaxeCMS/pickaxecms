@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import Guid from 'guid';
 import { connect } from 'react-redux'
 import _ from 'lodash';
-import { Icon, Modal, Button, Form, Grid, Image } from 'semantic-ui-react'
+import { Icon, Modal, Button, Form, Grid, Image, Loader, Dimmer } from 'semantic-ui-react'
 import config from '../config.js';
 import { invokeApig, s3Upload } from '../libs/awsLib';
+import ReactPlayer from 'react-player'
 import './CreateDivision.css';
 const SectionOptions = [
   { key: 'i', text: 'Image', value: 'image' },
@@ -33,6 +34,7 @@ class CreateEditDivision extends Component {
       isLoading: null,
       content: '',
       currentItem: currentItem || {},
+      loadingVideo: false,
       showModal: props.showModal,
       divisions: props.divisions,
       divisionsObject: props.divisionsOrderObject
@@ -43,17 +45,18 @@ class CreateEditDivision extends Component {
   handleChange = (e, { value }) => this.setState({ value })
 
   handleFileChange = async (event) => {
-    if (event.target.files[0] && event.target.files[0].size > config.MAX_ATTACHMENT_SIZE) {
-      alert('Please pick a file smaller than 5MB');
-      return;
-    }
+    this.setState({loadingVideo:true})
+    var type = event.target.files[0].type.split('/');
     try {
-      const uploadedFilename = (event.target.files[0])
-        ? (await s3Upload(event.target.files[0], this.props.userToken)).Location
-        : null;
+      const uploadedFilename = null
+      await s3Upload(event.target.files[0], this.props.userToken).then(data =>{
         var currentItem = this.state.currentItem;
-        currentItem.sections.attachment = {image: uploadedFilename, style:'top'};
+        currentItem.sections.attachment = {file: data.Location, type:type[0], style:'top'};
         this.setState({currentItem})
+        this.setState({loadingVideo:false})
+
+      })
+
       }
       catch(e) {
         alert(e);
@@ -62,17 +65,19 @@ class CreateEditDivision extends Component {
   }
 
   handleSectionFileChange = async (index, subSectionIndex, event) => {
-    if (this.file && this.file.size > config.MAX_ATTACHMENT_SIZE) {
-      alert('Please pick a file smaller than 5MB');
-      return;
-    }
+    console.log('index', index)
+    console.log('subSectionIndex', subSectionIndex)
+    console.log('event', event)
+    var type = event.target.files[0].type.split('/');
     try {
-      const uploadedFilename = (event.target.files[0])
-        ? (await s3Upload(event.target.files[0], this.props.userToken)).Location
-        : null;
-        var currentItem = this.state.currentItem;
-        currentItem.sections.sections[index][subSectionIndex].attachment = uploadedFilename;
-        this.setState({currentItem})
+        const uploadedFilename = null
+        await s3Upload(event.target.files[0], this.props.userToken).then(data =>{
+          var currentItem = this.state.currentItem;
+          currentItem.sections.sections[index][subSectionIndex].attachment = {file: data.Location, type:type[0], style:'top'};
+          this.setState({currentItem})
+          this.setState({loadingVideo:false})
+
+        })
       }
       catch(e) {
         alert(e);
@@ -137,7 +142,6 @@ class CreateEditDivision extends Component {
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
       router.push({ pathname: `/pages/${divisionsObject.pageId}` })
-      // this.props.handleDivisionButton(divisions);
     }
     catch(e) {
       alert(e);
@@ -285,11 +289,21 @@ class CreateEditDivision extends Component {
                   placeholder='Link Label'
                   defaultValue={this.state.currentItem.sections.linkText || null}
                   onChange={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.linkText = value; this.setState({currentItem})}} />
-              <Form.Input
-                type="file"
-                onChange={this.handleFileChange}
-                id="file"
-              />
+                {
+                  this.state.loadingVideo
+                  ?
+                  <Dimmer active={true}>
+                   <Loader indeterminate active={true}>Uploading File</Loader>
+                 </Dimmer>
+                  :
+                  null
+                }
+                <label><b>Add Image/Video</b></label>
+                  <Form.Input
+                  type="file"
+                  onChange={this.handleFileChange}
+                  id="file"
+                />
               {
                 !this.state.currentItem.sections.sections || this.state.currentItem.sections.sections.length !== 3
                 ?
@@ -311,20 +325,44 @@ class CreateEditDivision extends Component {
             :
             <div style={{ textAlign: 'center'}}>
               {
-                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "banner-top"
+                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "banner-top"&& this.state.currentItem.sections.attachment.type === "image"
                 ?
-                <Image src={this.state.currentItem.sections.attachment.image} style={{width:'100%'}} />
+                <Image src={this.state.currentItem.sections.attachment.file} style={{width:'100%'}} />
                 :
                 null
               }
               {
-                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "top"
+                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "banner-top" && this.state.currentItem.sections.attachment.type === "video"
+                ?
+                <Grid style={{width:'104%'}}>
+                    <ReactPlayer style={{marginLeft:'-20px'}} width="100%" height="100%" loop url={this.state.currentItem.sections.attachment.file} playing />
+                </Grid>
+                :
+                null
+              }
+              {
+                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "top" && this.state.currentItem.sections.attachment.type === "image"
                 ?
                 <Grid style={{width:'100%'}}>
                   <Grid.Column style={{flexGrow:1}}>
                   </Grid.Column>
                   <Grid.Column style={{minWidth:250, maxWidth:500}}>
-                    <Image src={this.state.currentItem.sections.attachment.image} />
+                    <Image src={this.state.currentItem.sections.attachment.file} />
+                  </Grid.Column>
+                  <Grid.Column style={{flexGrow:1}}>
+                  </Grid.Column>
+                </Grid>
+                :
+                null
+              }
+              {
+                this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "top" && this.state.currentItem.sections.attachment.type === "video"
+                ?
+                <Grid style={{width:'104%'}}>
+                  <Grid.Column style={{flexGrow:1}}>
+                  </Grid.Column>
+                  <Grid.Column style={{textAlign:'center', width:'auto'}}>
+                    <ReactPlayer loop url={this.state.currentItem.sections.attachment.file} playing />
                   </Grid.Column>
                   <Grid.Column style={{flexGrow:1}}>
                   </Grid.Column>
@@ -349,7 +387,7 @@ class CreateEditDivision extends Component {
                             {
                               subSection.attachment
                               ?
-                              <Image style={{flexGrow: 1}} src={subSection.attachment} />
+                              <Image style={{flexGrow: 1}} src={subSection.attachment.file} />
                               :
                               null
                             }
@@ -366,13 +404,22 @@ class CreateEditDivision extends Component {
                 </Grid>
 
                 {
-                  this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "bottom"
+                  this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "bottom" && this.state.currentItem.sections.attachment.type === "image"
                   ?
-                  <Grid style={{width:'100%'}}>
+                  <Grid style={{width:'104%'}}>
+                      <ReactPlayer style={{marginLeft:'-20px'}} width="100%" height="100%" loop url={this.state.currentItem.sections.attachment.file} playing />
+                  </Grid>
+                  :
+                  null
+                }
+                {
+                  this.state.currentItem.sections.attachment && this.state.currentItem.sections.attachment.style === "bottom" && this.state.currentItem.sections.attachment.type === "video"
+                  ?
+                  <Grid style={{width:'104%'}}>
                     <Grid.Column style={{flexGrow:1}}>
                     </Grid.Column>
-                    <Grid.Column style={{minWidth:250, maxWidth:500}}>
-                      <Image src={this.state.currentItem.sections.attachment.image} />
+                    <Grid.Column style={{textAlign:'center', width:'auto'}}>
+                      <ReactPlayer loop url={this.state.currentItem.sections.attachment.file} playing />
                     </Grid.Column>
                     <Grid.Column style={{flexGrow:1}}>
                     </Grid.Column>
@@ -396,7 +443,7 @@ class CreateEditDivision extends Component {
                 null
               }
               <div style={{ textAlign: 'left', marginTop: 15}}>
-                <Button onClick={this.handleSubmitDivision} color='teal'>Save</Button>
+                <Button onClick={this.handleSubmitDivision} disable={!this.state.loadingVideo} color='teal'>Save</Button>
                 <Button onClick={() => this.setState({preview: !this.state.preview})}>Close Preview</Button>
                 <Button onClick={this.handleCancelModal}>Cancel</Button>
               </div>

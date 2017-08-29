@@ -7,6 +7,8 @@ import AdminToolbar from './AdminToolbar';
 import CreateEditDivision from './CreateEditDivision';
 import CreateEditPage from './CreateEditPage';
 import MediaQuery from 'react-responsive';
+import ReactPlayer from 'react-player'
+import Slider from 'react-slick';
 
 export default class Divisions extends Component {
   constructor(props){
@@ -47,8 +49,19 @@ export default class Divisions extends Component {
   }
 
   render() {
+    const settings={
+            dots: true,
+            infinite: true,
+            speed: 500,
+            // autoplay: true,
+            adaptiveHeight:true,
+            autoplaySpeed: 5000, /* autoplaySeconds * 1000 */
+            slidesToShow: 1, /* slidesToShow  */
+            slidesToScroll: 1,
+            pauseOnHover: true
+          }
     return (
-      <div style={{width:'100vw', marginLeft:20, marginBottom:50}}>
+      <div style={{width:'100vw', marginTop:50, marginLeft:20, marginBottom:50}}>
         {
           this.state.divisions.map((division, i) =>
           <div key={i}>
@@ -125,29 +138,39 @@ export default class Divisions extends Component {
                     :
                     null
                   }
+
                   {
-                    division.sections && division.sections.attachment && division.sections.attachment.style === "banner-top"
+                    division && division.sections && division.sections.attachment && division.sections.attachment.style === "banner-top" && division.sections.attachment.type === "image"
                     ?
                     <Grid style={{width:'100vw'}}>
                       <Grid.Column style={{width:'100vw'}}>
-                        <Image style={{width:'100vw'}} src={division.sections.attachment.image} />
+                        <Image style={{width:'100vw'}} src={division.sections.attachment.file} />
                       </Grid.Column>
                     </Grid>
                     :
                     null
                   }
                   {
-                    division.sections && division.sections.attachment && division.sections.attachment.style === "top"
+                    division && division.sections && division.sections.attachment && division.sections.attachment.style === "banner-top" && division.sections.attachment.type === "video"
+                    ?
+                    <Grid style={{width:'104%'}}>
+                        <ReactPlayer style={{marginLeft:'-20px'}} width="100%" height="100%" loop url={division.sections.attachment.file} playing />
+                    </Grid>
+                    :
+                    null
+                  }
+                  {
+                    division && division.sections && division.sections.attachment && division.sections.attachment.style === "top" && division.sections.attachment.type === 'image'
                     ?
                     <Grid style={{width: '100vw'}}>
                       <Grid.Column style={{flexGrow:1}}>
                       </Grid.Column>
                       <Grid.Column style={{textAlign:'center', width:'auto'}}>
                         <MediaQuery maxDeviceWidth={1224} style={{width:'100%'}}>
-                          <Image style={{height:100}} src={division.sections.attachment.image} />
+                          <Image style={{height:100}} src={division.sections.attachment.file} />
                         </MediaQuery>
                         <MediaQuery minDeviceWidth={1224} style={{height:'100px', textAlign:"center"}}>
-                          <Image src={division.sections.attachment.image} />
+                          <Image src={division.sections.attachment.file} />
                         </MediaQuery>
                       </Grid.Column>
                       <Grid.Column style={{flexGrow:1}}>
@@ -157,7 +180,22 @@ export default class Divisions extends Component {
                     null
                   }
                   {
-                    division.sections.header1
+                    division && division.sections && division.sections.attachment && division.sections.attachment.style === "top" && division.sections.attachment.type === "video"
+                    ?
+                    <Grid style={{width:'104%'}}>
+                      <Grid.Column style={{flexGrow:1}}>
+                      </Grid.Column>
+                      <Grid.Column style={{textAlign:'center', width:'auto'}}>
+                        <ReactPlayer loop url={division.sections.attachment.file} playing />
+                      </Grid.Column>
+                      <Grid.Column style={{flexGrow:1}}>
+                      </Grid.Column>
+                    </Grid>
+                    :
+                    null
+                  }
+                  {
+                    division && division.sections.header1
                     ?
                     <Grid divided columns='equal' style={{boxShadow: 'none',  width: '100vw',  textAlign:'center', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
@@ -168,7 +206,7 @@ export default class Divisions extends Component {
                     null
                   }
                   {
-                    division.sections.header2
+                    division && division.sections.header2
                     ?
                     <Grid divided style={{boxShadow: 'none', width: '100vw', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
@@ -179,7 +217,7 @@ export default class Divisions extends Component {
                     null
                   }
                   {
-                    division.sections.header3
+                    division && division.sections.header3
                     ?
                     <Grid divided style={{boxShadow: 'none', width: '100vw', marginBottom:15}} >
                       <Grid.Column style={{boxShadow: 'none', width: '100vw'}}>
@@ -191,7 +229,7 @@ export default class Divisions extends Component {
                   }
                   <Grid>
                     {
-                      division.sections.sections && division.sections.sections.map((section, i) =>
+                      division && division.sections.sections && division.sections.sections.map((section, i) =>
                       <Grid.Row style={{flexGrow: 1, marginBottom:-15, width:'100%',  paddingLeft:65, paddingRight:100}} key={i}>
                         {
                           section.map((subSection, s) =>
@@ -203,7 +241,7 @@ export default class Divisions extends Component {
                                 {
                                   subSection.attachment
                                   ?
-                                  <Image style={{flexGrow: 1}} src={subSection.attachment} />
+                                  <Image style={{flexGrow: 1}} src={subSection.attachment.file} />
                                   :
                                   null
                                 }
@@ -219,13 +257,13 @@ export default class Divisions extends Component {
                     }
                     </Grid>
                     {
-                      division.sections.attachment && division.sections.attachment.style === "bottom"
+                      division && division.sections.attachment && division.sections.attachment.style === "bottom" && division.sections.attachment.type === 'image'
                       ?
                       <Grid style={{width: '100%', paddingLeft:65, paddingRight:100}}>
                         <Grid.Column style={{flexGrow:1}}>
                         </Grid.Column>
                         <Grid.Column style={{minWidth:250, maxWidth:500}}>
-                          <Image src={division.sections.attachment.image} />
+                          <Image src={division.sections.attachment.file} />
                         </Grid.Column>
                         <Grid.Column style={{flexGrow:1}}>
                         </Grid.Column>
@@ -234,7 +272,22 @@ export default class Divisions extends Component {
                       null
                     }
                     {
-                      division.sections.linkText
+                      division && division.sections.attachment && division.sections.attachment.style === "bottom" && division.sections.attachment.type === "video"
+                      ?
+                      <Grid style={{width:'104%'}}>
+                        <Grid.Column style={{flexGrow:1}}>
+                        </Grid.Column>
+                        <Grid.Column style={{textAlign:'center', width:'auto'}}>
+                          <ReactPlayer loop url={division.sections.attachment.file} playing />
+                        </Grid.Column>
+                        <Grid.Column style={{flexGrow:1}}>
+                        </Grid.Column>
+                      </Grid>
+                      :
+                      null
+                    }
+                    {
+                      division && division.sections.linkText
                       ?
                       <Grid divided columns='equal' style={{boxShadow: 'none', width: '100%', paddingLeft:60, paddingRight:100}} >
                         <Grid.Column style={{boxShadow: 'none'}}>

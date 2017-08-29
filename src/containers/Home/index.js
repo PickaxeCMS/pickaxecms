@@ -13,6 +13,7 @@ import Navbar from '../../components/Navbar';
 import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import config from '../../config.js';
 import Divisions from '../../components/Divisions'
+import WebFont from 'webfontloader'
 
 class Home extends Component {
   constructor(props) {
@@ -33,6 +34,11 @@ class Home extends Component {
     const currentUser = this.getCurrentUser();
     dispatch(fetchDivisionsIfNeeded(selectedPage))
 
+    WebFont.load({
+      google: {
+        families: ['Roboto Thin', 'Roboto Light Italic']
+      }
+    })
     if (currentUser === null) {
       this.setState({isLoadingUserToken: false});
       return;
@@ -92,7 +98,7 @@ class Home extends Component {
   render() {
     const { selectedPage, divisions, divisionsBypage, isFetching } = this.props
     return (
-      <Segment basic style={{ backgroundColor: '#F4F8F9', color: '#27292A', minHeight:'100vh' }}>
+      <Segment basic style={{ fontFace:'google', backgroundColor: '#F4F8F9', color: '#27292A', minHeight:'100vh' }}>
         <Navbar />
           {divisions.length > 0 &&
             <div style={{ opacity: isFetching ? 0.5 : 1, width:'100vw', marginLeft:-15}}>

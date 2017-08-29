@@ -58,6 +58,7 @@ class AdminToolbar extends Component {
     this.props.handlesDeletePageClick();
   }
   componentWillMount(){
+    console.log('nextProps.selectedPage', this.props.selectedPage)
     this.setState({navItems:this.props.divisionsBypage['site_plan'].navItems})
     if(this.state.navItems[this.props.selectedPage] !== undefined){
       this.setState({activePage: true})
@@ -65,8 +66,10 @@ class AdminToolbar extends Component {
     else{
       this.setState({activePage: false})
     }
+    this.forceUpdate()
   }
   componentWillReceiveProps(nextProps){
+    console.log('nextProps.selectedPage', nextProps.selectedPage)
     this.setState({navItems:nextProps.divisionsBypage['site_plan'].navItems})
     if(this.state.navItems[nextProps.selectedPage] !== undefined){
       this.setState({activePage: true})
@@ -74,6 +77,7 @@ class AdminToolbar extends Component {
     else{
       this.setState({activePage: false})
     }
+    this.forceUpdate()
   }
 
   render() {
@@ -163,6 +167,7 @@ class AdminToolbar extends Component {
                   :
                   null
                 }
+                {console.log('THIS>STATE>ACTIVEPAGE ', this.state.activePage)}
                 {
                   this.state.activePage
                   ?
@@ -172,7 +177,7 @@ class AdminToolbar extends Component {
                   :
                   <div>
                     {
-                      this.state.activePage === undefined || 'site_plan'
+                      this.props.selectedPage === undefined || 'site_plan'
                       ?
                       null
                       :

@@ -37,6 +37,7 @@ function divisions(
   },
   action
 ) {
+  console.log('ACTIONS', action)
   switch (action.type) {
     case INVALIDATE_PAGE:
       return Object.assign({}, state, {

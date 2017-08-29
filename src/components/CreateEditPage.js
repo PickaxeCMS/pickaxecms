@@ -110,17 +110,36 @@ class CreateEditPage extends Component {
     event.preventDefault();
 
     var newPage = this.state.currentItem;
-    newPage.divisions = [];
     var id = newPage.displayName.replace(/\s+/g, '_').toLowerCase()
+    newPage.divisions = [`${id}division1`];
     this.setState({ isLoading: true });
 
     try {
+      // Creates the new page
       var page = {
         ...newPage,
+        sections:{
+          attachment:{
+            style:'top'
+          }
+        },
         pageId: id,
         id: id,
       }
+      // Adds the first division
+      var division = {
+        sections:{
+          header1: newPage.displayName,
+          attachment:{
+            style:'top'
+          }
+        },
+        category: 'division',
+        pageId: id,
+        id: `${id}division1`,
+      }
       await this.savePage(page);
+      await this.savePage(division);
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
       router.push({ pathname: `/pages/${page.pageId}` })

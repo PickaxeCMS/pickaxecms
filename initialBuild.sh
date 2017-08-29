@@ -5,20 +5,26 @@ set -e;
 #     $ ./example.sh TestStack us-west-2;
 
 STACK=$1;
-STACKNAME="$1-serverless-prod";
-export REACT_APP_AWS_REGION=$2;
+STACK_NO_WHITESPACE="$(echo -e "${STACK}" | tr -d '[:space:]')"
+STACKNAME="$STACK_NO_WHITESPACE-serverless-prod";
+export REACT_APP_AWS_REGION=$2 || 'us-east-1';
 
-# # This is a standard Bash trick to get the directory the script is running in.
+# This is a standard Bash trick to get the directory the script is running in.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
+
+# GIT CLONE
 
 # Install All Dependencies
 npm install
 
+# Go into serverless directory
 cd ./serverless
-# Deploy the app using Serverless
-APP_NAME="$STACK" serverless deploy --verbose SLS_DEBUG=*
 
-# Retrieve all outputs from the stack and set them as environment variables
+# Deploy the app using Serverless
+APP_NAME="$STACK_NO_WHITESPACE" serverless deploy --verbose SLS_DEBUG=*
+
+# Retrieve all outputs from the stack and set them as environment variables.
+# NOTE: For use in the React App, all env variables must be preceded by REACT_APP_
 stack_info=$(aws cloudformation describe-stacks --region $REACT_APP_AWS_REGION --stack-name $STACKNAME --output json)
 if [[ "$stack_info" =~ "OutputKey" ]]; then
   read -r -a output_keys <<< $(echo "$stack_info" | jq ".Stacks[].Outputs[].OutputKey")
@@ -31,15 +37,38 @@ if [[ "$stack_info" =~ "OutputKey" ]]; then
   done
 fi
 
+# Upload Site Logo (Default is Pickaxe Logo) Allow Read access to ALl
+aws s3 cp ../logo.png s3://$REACT_APP_UploadsBucket --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+
+LOGO_S3_URL='https://s3.amazonaws.com/'$REACT_APP_UploadsBucket'/logo.png'
+echo 'LOGO_S3_URL' $LOGO_S3_URL
+# Initial Build Out of Site Plan
+jq -n --arg STACK "$STACK" --arg LOGO_S3_URL "$LOGO_S3_URL"  '{
+  "pageId": {"S": "site_plan"},
+  "id": {"S": "site_plan"},
+  "category": {"S": "page"},
+  "navItems": {"M": {}},
+  "siteName": {"S": $STACK},
+  "siteLogo": {"S": $LOGO_S3_URL },
+  "divisionsOrder": {"L": [
+      {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"}
+    ]}
+}' > ../json/site_plan.json
+
 # Add Initial Structure for the site_plan
-aws dynamodb put-item --table-name $REACT_APP_AppName --item file://site_plan.json
-aws dynamodb put-item --table-name $REACT_APP_AppName --item file://initial_division.json
+aws dynamodb put-item --table-name $REACT_APP_AppName --item file://../json/site_plan.json
+aws dynamodb put-item --table-name $REACT_APP_AppName --item file://../json/initial_division.json
 
 
 # Update cors on bucket to be able to upload/view from the app
 aws s3api put-bucket-cors \
   --bucket $REACT_APP_UploadsBucket \
   --cors-configuration file://bucketCors.json
+
+# Update acl on bucket to be able to upload/view from the app
+aws s3api put-bucket-acl \
+  --bucket $REACT_APP_UploadsBucket \
+  --acl 'public-read'
 
 # Create first Admin User
 aws cognito-idp sign-up \
@@ -55,6 +84,7 @@ aws cognito-idp admin-confirm-sign-up \
 --user-pool-id $REACT_APP_UserPoolId \
 --username admin@example.com
 
+export REACT_APP_NAME=$1
 
 # Change directory to react app
 cd ../src

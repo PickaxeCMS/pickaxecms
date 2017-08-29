@@ -5,7 +5,6 @@ import { Sidebar, Menu, Image, Dropdown, Icon, Segment } from 'semantic-ui-react
 import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import config from '../config.js';
 import { connect } from 'react-redux'
-import logo from '../media/logo.png';
 import MediaQuery from 'react-responsive';
 import {
   fetchDivisionsIfNeeded
@@ -17,7 +16,7 @@ class Navbar extends Component {
     super(props);
     this.state = {
       userToken: null,
-      isLoadingUserToken: true,
+      isLoadingUserToken: true
     };
   }
   componentDidUpdate(prevProps) {
@@ -28,6 +27,7 @@ class Navbar extends Component {
   }
 
   async componentDidMount() {
+    console.log('REACT_APP_NAME', process.env.REACT_APP_NAME)
     const currentUser = this.getCurrentUser();
 
     if (currentUser === null) {
@@ -94,11 +94,11 @@ class Navbar extends Component {
     }
 
   return (
-      <nav className="navbar navbar-default" style={{marginBottom:45, marginLeft:-15, backgroundColor: '#1B1C1D', width:'100vw', top:0, zIndex:500, position:'fixed'}}>
-        <Menu inverted secondary>
+      <nav className="navbar navbar-default" style={{marginBottom:45, marginLeft:-14, backgroundColor: '#1B1C1D', width:'100vw', top:0, zIndex:500, position:'fixed'}}>
+        <Menu inverted secondary style={{width:'100vw'}}>
           <Menu.Item href='/' style={{height:50}}>
-            <Image src={logo} style={{width:'30px', height:'30px', marginTop: '0px', marginLeft:0, cursor:'pointer'}}/>
-            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>{process.env.REACT_APP_AppName}</h3>
+            <Image src={process.env.REACT_APP_LOGO} style={{width:'30px', height:'30px', marginTop: '0px', marginLeft:0, cursor:'pointer'}}/>
+            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>{process.env.REACT_APP_NAME}</h3>
           </Menu.Item>
             <MediaQuery minDeviceWidth={1224} style={{width:"100%"}}>
               {

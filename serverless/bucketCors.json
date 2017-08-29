@@ -4,7 +4,8 @@
       "AllowedMethods": ["GET", "HEAD", "POST", "PUT"],
       "AllowedHeaders": ["*"],
       "AllowedOrigins": ["*"],
-      "MaxAgeSeconds": 3000
+      "MaxAgeSeconds": 3000,
+      "ExposeHeaders": ["ETag"]
     }
   ]
 }
