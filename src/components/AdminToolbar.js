@@ -58,7 +58,6 @@ class AdminToolbar extends Component {
     this.props.handlesDeletePageClick();
   }
   componentWillMount(){
-    console.log('nextProps.selectedPage', this.props.selectedPage)
     this.setState({navItems:this.props.divisionsBypage['site_plan'].navItems})
     if(this.state.navItems[this.props.selectedPage] !== undefined){
       this.setState({activePage: true})
@@ -69,7 +68,6 @@ class AdminToolbar extends Component {
     this.forceUpdate()
   }
   componentWillReceiveProps(nextProps){
-    console.log('nextProps.selectedPage', nextProps.selectedPage)
     this.setState({navItems:nextProps.divisionsBypage['site_plan'].navItems})
     if(this.state.navItems[nextProps.selectedPage] !== undefined){
       this.setState({activePage: true})
@@ -106,9 +104,6 @@ class AdminToolbar extends Component {
                       <Dropdown.Item name='newPage' onClick={this.handleNewPageButton}>
                         + New Page
                       </Dropdown.Item>
-                      <Dropdown.Item name='newDivision' onClick={this.handleNewDivisionButton}>
-                        + New Section
-                      </Dropdown.Item>
                       {
                         this.state.activePage
                         ?
@@ -116,18 +111,9 @@ class AdminToolbar extends Component {
                           - Remove Page From Navbar
                         </Dropdown.Item>
                         :
-                        <div>
-                          {
-                            this.state.activePage === undefined || 'site_plan'
-                            ?
-                            null
-                            :
-                            <Dropdown.Item name='addNav' onClick={this.handleAddNavButton}>
-                              + Add Page To Navbar
-                            </Dropdown.Item>
-
-                          }
-                        </div>
+                        <Dropdown.Item name='addNav' onClick={this.handleAddNavButton}>
+                          + Add Page To Navbar
+                        </Dropdown.Item>
                       }
                       {
                         this.props.selectedPage !== 'site_plan'
@@ -168,20 +154,9 @@ class AdminToolbar extends Component {
                     - Remove Page From Navbar
                   </Menu.Item>
                   :
-                  <div>
-                    <Menu.Item name='addNav' onClick={this.handleAddNavButton} style={{float: 'left', height:50}}>
-                      + Add Page To Navbar
-                    </Menu.Item>
-                    {
-                      this.props.selectedPage === undefined || 'site_plan'
-                      ?
-                      null
-                      :
-                      <Menu.Item name='addNav' onClick={this.handleAddNavButton} style={{float: 'left', height:50}}>
-                        + Add Page To Navbar
-                      </Menu.Item>
-                    }
-                  </div>
+                  <Menu.Item name='addNav' onClick={this.handleAddNavButton} style={{float: 'left', height:50}}>
+                    + Add Page To Navbar
+                  </Menu.Item>
                 }
                 {
                   this.props.selectedPage !== 'site_plan'

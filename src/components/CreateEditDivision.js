@@ -104,7 +104,6 @@ class CreateEditDivision extends Component {
     event.preventDefault();
 
     this.setState({ isLoading: true });
-    console.log('this.props.selectedPage', this.props.selectedPage)
     try {
       var guid = Guid.create();
       var division = {
@@ -138,7 +137,6 @@ class CreateEditDivision extends Component {
       }
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
-      console.log('divisionsObject.pageId', divisionsObject.pageId)
       if(this.props.selectedPage === 'site_plan'){
         router.push({ pathname: `/` })
       }
