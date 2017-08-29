@@ -158,16 +158,9 @@ class AdminToolbar extends Component {
                 <Menu.Item name='newPage' onClick={this.handleNewPageButton} style={{float: 'left', height:50}}>
                   + New Page
                 </Menu.Item>
-                {
-                  this.props.selectedPage !== 'site_plan'
-                  ?
-                    <Menu.Item name='newDivision' onClick={this.handleNewDivisionButton} style={{float: 'left', height:50}}>
-                      + New Section
-                    </Menu.Item>
-                  :
-                  null
-                }
-                {console.log('THIS>STATE>ACTIVEPAGE ', this.state.activePage)}
+                <Menu.Item name='newDivision' onClick={this.handleNewDivisionButton} style={{float: 'left', height:50}}>
+                  + New Section
+                </Menu.Item>
                 {
                   this.state.activePage
                   ?
@@ -176,6 +169,9 @@ class AdminToolbar extends Component {
                   </Menu.Item>
                   :
                   <div>
+                    <Menu.Item name='addNav' onClick={this.handleAddNavButton} style={{float: 'left', height:50}}>
+                      + Add Page To Navbar
+                    </Menu.Item>
                     {
                       this.props.selectedPage === undefined || 'site_plan'
                       ?
@@ -184,7 +180,6 @@ class AdminToolbar extends Component {
                       <Menu.Item name='addNav' onClick={this.handleAddNavButton} style={{float: 'left', height:50}}>
                         + Add Page To Navbar
                       </Menu.Item>
-
                     }
                   </div>
                 }

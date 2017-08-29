@@ -65,9 +65,6 @@ class CreateEditDivision extends Component {
   }
 
   handleSectionFileChange = async (index, subSectionIndex, event) => {
-    console.log('index', index)
-    console.log('subSectionIndex', subSectionIndex)
-    console.log('event', event)
     var type = event.target.files[0].type.split('/');
     try {
         const uploadedFilename = null
@@ -107,7 +104,7 @@ class CreateEditDivision extends Component {
     event.preventDefault();
 
     this.setState({ isLoading: true });
-
+    console.log('this.props.selectedPage', this.props.selectedPage)
     try {
       var guid = Guid.create();
       var division = {
@@ -141,7 +138,13 @@ class CreateEditDivision extends Component {
       }
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
-      router.push({ pathname: `/pages/${divisionsObject.pageId}` })
+      console.log('divisionsObject.pageId', divisionsObject.pageId)
+      if(this.props.selectedPage === 'site_plan'){
+        router.push({ pathname: `/` })
+      }
+      else{
+        router.push({ pathname: `/pages/${divisionsObject.pageId}` })
+      }
     }
     catch(e) {
       alert(e);
