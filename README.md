@@ -10,21 +10,39 @@
   <a>Pickaxe CMS</a>
 </h1>
 
-Hey, we're in development.
+Pickaxe CMS is a free open source content management server for Amazon Web Services.
 
 ## Dependencies    
 
-### NPM     
-(NPM be downloaded <a href="https://docs.npmjs.com/getting-started/installing-node">here</a>)
+### [Node.js](https://nodejs.org/en/) and [NPM](https://www.npmjs.com/)
 
-### jq         
-(jq be downloaded <a href="https://stedolan.github.io/jq/download/">here</a>)     
-        
-### Serverless Framework    
-`     
-$  npm install -g serverless`     
-  
-### AWS Cli      
+**Node.js** is a lightweight and efficient JavaScript runtime that uses an event-driven, non-blocking I/O model.
+
+**NPM** is a package manager for JavaScript.
+
++ [Install Node.js and update npm](https://docs.npmjs.com/getting-started/installing-node)
+
+
+### [jq](https://stedolan.github.io/jq/)
+
+**jq** is a lightweight and flexible command-line JSON processor.
+
++ [Install jq](https://stedolan.github.io/jq/download/)
+
+
+### [Serverless Framework](https://serverless.com/framework/)
+
+**Serverless Framework** is a CLI for building serverless architectures on AWS.
+
++ [Install serverless CLI](https://serverless.com/framework/docs/getting-started/)
+
+
+### [AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+
+The AWS CLI provides commands for interacting with Amazon Web Services.
+
++ [Install AWS CLI](http://docs.aws.amazon.com/cli/latest/userguide/installing.html)
+
 Make sure aws-cli is configured using correct credentials.    
 If not, run:      
 `
@@ -38,7 +56,7 @@ Using Access Key and Secret Access Keys credentials obtained from AWS Console.
 
        
          
-#### If this is your first time running Pickaxe, run this:            
+#### If this is your first time running Pickaxe, start with this:            
         
 `$  ./initialBuild.sh <NAME_OF_YOUR_APP> <REGION_OF_DEPLOYMENT>`
         
