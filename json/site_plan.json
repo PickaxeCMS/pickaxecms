@@ -14,13 +14,13 @@
   "appSettings": {
     "M": {
       "name": {
-        "S": "SuperCoolApp"
+        "S": "Ampsight"
       },
       "theme": {
         "S": "dark"
       },
       "logo": {
-        "S": "https://s3.amazonaws.com/supercoolapp-serverless-prod-s3uploads-283tpxjp9vfh/logo.png"
+        "S": "https://s3.amazonaws.com/ampsight-serverless-prod-s3uploads-j06wpgejt305/logo.png"
       }
     }
   },

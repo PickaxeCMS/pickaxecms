@@ -99,14 +99,24 @@ class Pages extends Component {
     dispatch(fetchDivisionsIfNeeded(selectedPage))
   }
 
+  componentWillReceiveProps(nextProps){
+    if(nextProps.appSettings.theme === 'dark'){
+      this.setState({inverted:true})
+    }
+    else{
+      this.setState({inverted:false})
+    }
+    this.setState({appSettings: nextProps.appSettings})
+  }
+
   render() {
-    const { selectedPage, divisions, divisionsBypage, isFetching } = this.props
+    const { selectedPage, divisions, divisionsBypage, isFetching, appSettings } = this.props
     return (
       <Segment basic style={{ backgroundColor: '#F4F8F9', color: '#27292A', paddingBottom:50, minHeight:'100vh', width:'100vw' }}>
         <Helmet>
              <meta charSet="utf-8" />
-             <title>{this.state.appSettings.name}</title>
-             <link rel="icon" href={this.state.appSettings.logo} />
+             <title>{appSettings.name}</title>
+             <link rel="icon" href={appSettings.logo} />
          </Helmet>
         <Navbar />
         {isFetching && divisions.length === 0 && <Loader />}
@@ -134,7 +144,7 @@ Pages.propTypes = {
 }
 
 function mapStateToProps(state) {
-  const { selectedPage, divisionsBypage } = state
+  const { selectedPage, divisionsBypage, appSettings } = state
   const {
     isFetching,
     lastUpdated,
@@ -152,6 +162,7 @@ function mapStateToProps(state) {
   return {
     selectedPage,
     divisionsBypage,
+    appSettings,
     divisions,
     navItems,
     isFetching,
