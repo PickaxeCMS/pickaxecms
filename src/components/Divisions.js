@@ -442,6 +442,7 @@ export default class Divisions extends Component {
     this.setState({showNewEditPageModal: !this.state.showNewEditPageModal, currentItem:{}})
   }
   handlesAddNavClick = async(event) => {
+    console.log('this.props.appSettings', this.props.appSettings)
     var navObject = this.props.divisionsBypage['site_plan'];
     navObject.navItems[this.state.divisionsOrderObject.pageId] = {
       displayName: this.state.divisionsOrderObject.displayName
@@ -450,19 +451,21 @@ export default class Divisions extends Component {
       id:'site_plan',
       pageId: 'site_plan',
       navItems:navObject.navItems,
-      appSettings:navObject.appSettings,
+      appSettings:this.props.appSettings,
     });
     const { router } = this.context
     router.push({ pathname: `/` })
   }
   handlesRemoveNavClick = async(event) => {
+    console.log('this.props.appSettings', this.props.appSettings)
+
     var navObject = this.props.divisionsBypage['site_plan'];
     delete navObject.navItems[this.state.divisionsOrderObject.pageId];
     await this.saveDivision({
       id:'site_plan',
       pageId: 'site_plan',
       navItems:navObject.navItems,
-      appSettings:navObject.appSettings,
+      appSettings:this.props.appSettings,
     });
     const { router } = this.context
     router.push({ pathname: `/` })
@@ -497,6 +500,7 @@ Divisions.contextTypes = {
 }
 Divisions.propTypes = {
   divisions: PropTypes.array.isRequired,
+  appSettings: PropTypes.object.isRequired,
   isEditing: PropTypes.bool,
   dispatch: PropTypes.func
 }

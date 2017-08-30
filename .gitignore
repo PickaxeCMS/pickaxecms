@@ -33,8 +33,8 @@ bower_components
 serverless/.serverless
 
 # JSON built by InitialBuild.sh
-json/site_plan_dynamo.json
-json/site_plan.json
+./json/site_plan_dynamo.json
+./json/site_plan.json
 
 
 # node-waf configuration

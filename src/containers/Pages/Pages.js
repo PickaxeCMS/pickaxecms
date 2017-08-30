@@ -125,7 +125,7 @@ class Pages extends Component {
         }
         {divisions.length > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1, width:'100vw', marginLeft:-15}}>
-            <Divisions style={{width:'100vw'}} divisions={divisions} divisionsBypage={divisionsBypage} userToken={this.state.userToken} style={{width:'100vw'}} />
+            <Divisions style={{width:'100vw'}} appSettings={this.props.appSettings} divisions={divisions} divisionsBypage={divisionsBypage} userToken={this.state.userToken} style={{width:'100vw'}} />
           </div>}
       </Segment>
     )
