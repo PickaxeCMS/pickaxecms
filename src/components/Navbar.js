@@ -16,7 +16,8 @@ class Navbar extends Component {
     super(props);
     this.state = {
       userToken: null,
-      isLoadingUserToken: true
+      isLoadingUserToken: true,
+      inverted:true
     };
   }
   componentDidUpdate(prevProps) {
@@ -27,7 +28,6 @@ class Navbar extends Component {
   }
 
   async componentDidMount() {
-    console.log('REACT_APP_NAME', process.env.REACT_APP_NAME)
     const currentUser = this.getCurrentUser();
 
     if (currentUser === null) {
@@ -44,6 +44,14 @@ class Navbar extends Component {
     }
 
     this.setState({isLoadingUserToken: false});
+  }
+  componentWillReceiveProps(nextProps){
+    if(nextProps.appSettings.theme === 'dark'){
+      this.setState({inverted:true})
+    }
+    else{
+      this.setState({inverted:false})
+    }
   }
 
   getCurrentUser() {
@@ -95,10 +103,10 @@ class Navbar extends Component {
 
   return (
       <nav className="navbar navbar-default" style={{marginBottom:45, marginLeft:-14, backgroundColor: '#1B1C1D', width:'100vw', top:0, zIndex:500, position:'fixed'}}>
-        <Menu inverted secondary style={{width:'100vw'}}>
+        <Menu inverted={this.state.inverted} secondary style={{width:'100vw'}}>
           <Menu.Item href='/' style={{height:50}}>
-            <Image src={process.env.REACT_APP_LOGO} style={{width:'30px', height:'30px', marginTop: '0px', marginLeft:0, cursor:'pointer'}}/>
-            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>{process.env.REACT_APP_NAME}</h3>
+            <Image src={this.props.appSettings.logo} style={{width:'30px', height:'30px', marginTop: '0px', marginLeft:0, cursor:'pointer'}}/>
+            <h3 style={{color:'white', marginTop: '0px', marginLeft:5, cursor:'pointer'}}>{this.props.appSettings.name}</h3>
           </Menu.Item>
             <MediaQuery minDeviceWidth={1224} style={{width:"100%"}}>
               {
@@ -171,7 +179,7 @@ Navbar.contextTypes = {
     router: PropTypes.object
 }
 const mapStateToProps = state => {
-    const { selectedPage, divisionsBypage } = state
+    const { selectedPage, divisionsBypage, appSettings } = state
     const {
       isFetching,
       lastUpdated,
@@ -184,6 +192,7 @@ const mapStateToProps = state => {
 
     return {
       selectedPage,
+      appSettings,
       divisions,
       navItems,
       isFetching,

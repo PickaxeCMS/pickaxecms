@@ -7,6 +7,10 @@ import {
   REQUEST_POSTS,
   RECEIVE_POSTS
 } from '../actions/divisionsActions'
+import {
+  REQUEST_APP_SETTINGS,
+  RECEIVE_APP_SETTINGS,
+} from '../actions/appSettingsActions'
 
 function selectedPage(state = 'site_plan', action) {
   switch (action.type) {
@@ -27,6 +31,27 @@ function isEditing(state = false, action) {
       return state
   }
 }
+ function settings(
+   state = {
+     isFetching: false,
+     didInvalidate: false,
+     settings: {}
+   },
+   action
+ ) {
+   switch (action.type) {
+     case REQUEST_APP_SETTINGS:
+       return Object.assign({}, state, {
+         isFetching: true,
+         didInvalidate: false
+       })
+     case RECEIVE_APP_SETTINGS:
+        console.log('action.settings', action.settings)
+        if(action.settings !== {}){
+          return action.settings
+        }
+   }
+ }
 
 function divisions(
   state = {
@@ -37,7 +62,6 @@ function divisions(
   },
   action
 ) {
-  console.log('ACTIONS', action)
   switch (action.type) {
     case INVALIDATE_PAGE:
       return Object.assign({}, state, {
@@ -83,9 +107,19 @@ function divisionsBypage(state = {}, action) {
       return state
   }
 }
+function appSettings(state = {}, action) {
+  switch (action.type) {
+    case RECEIVE_APP_SETTINGS:
+    case REQUEST_APP_SETTINGS:
+      return settings(state[action.page], action)
+    default:
+      return state
+  }
+}
 
 const rootReducer = combineReducers({
   divisionsBypage,
+  appSettings,
   selectedPage,
   isEditing
 })

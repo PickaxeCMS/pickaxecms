@@ -13,6 +13,10 @@ import { CognitoUserPool, } from 'amazon-cognito-identity-js';
 import config from '../../config.js';
 import './Pages.css';
 import Divisions from '../../components/Divisions';
+import {
+  fetchAppSettings
+} from '../../redux/actions/appSettingsActions'
+import Helmet from "react-helmet";
 
 class Pages extends Component {
   constructor(props) {
@@ -28,6 +32,7 @@ class Pages extends Component {
     const { params } = this.props;
     this.props.dispatch(selectPage(params.id))
     this.props.dispatch(fetchDivisionsIfNeeded(params.id))
+    this.props.dispatch(fetchAppSettings('site_plan'))
   }
 
   componentDidUpdate(prevProps) {
@@ -35,6 +40,7 @@ class Pages extends Component {
     if (this.props.selectedPage !== prevProps.selectedPage) {
       const { dispatch, selectedPage } = this.props
       dispatch(fetchDivisionsIfNeeded(selectedPage))
+      dispatch(fetchAppSettings('site_plan'))
     }
   }
 
@@ -42,6 +48,7 @@ class Pages extends Component {
     const currentUser = this.getCurrentUser();
     const { dispatch, selectedPage } = this.props
     dispatch(fetchDivisionsIfNeeded(selectedPage))
+    dispatch(fetchAppSettings('site_plan'))
 
     if (currentUser === null) {
       this.setState({isLoadingUserToken: false});
@@ -96,6 +103,11 @@ class Pages extends Component {
     const { selectedPage, divisions, divisionsBypage, isFetching } = this.props
     return (
       <Segment basic style={{ backgroundColor: '#F4F8F9', color: '#27292A', paddingBottom:50, minHeight:'100vh', width:'100vw' }}>
+        <Helmet>
+             <meta charSet="utf-8" />
+             <title>{this.state.appSettings.name}</title>
+             <link rel="icon" href={this.state.appSettings.logo} />
+         </Helmet>
         <Navbar />
         {isFetching && divisions.length === 0 && <Loader />}
         {

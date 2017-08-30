@@ -48,8 +48,11 @@ jq -n --arg STACK "$STACK" --arg LOGO_S3_URL "$LOGO_S3_URL"  '{
   "id": {"S": "site_plan"},
   "category": {"S": "page"},
   "navItems": {"M": {}},
-  "siteName": {"S": $STACK},
-  "siteLogo": {"S": $LOGO_S3_URL },
+  "appSettings": {"M": {
+    "name": {"S": $STACK},
+    "theme": {"S": "dark"},
+    "logo": {"S": $LOGO_S3_URL }
+  }}
   "divisionsOrder": {"L": [
       {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"}
     ]}
@@ -63,7 +66,7 @@ aws dynamodb put-item --table-name $REACT_APP_AppName --item file://../json/init
 # Update cors on bucket to be able to upload/view from the app
 aws s3api put-bucket-cors \
   --bucket $REACT_APP_UploadsBucket \
-  --cors-configuration file://bucketCors.json
+  --cors-configuration file://../json/bucketCors.json
 
 # Update acl on bucket to be able to upload/view from the app
 aws s3api put-bucket-acl \

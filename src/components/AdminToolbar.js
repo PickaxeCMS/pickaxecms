@@ -18,7 +18,8 @@ class AdminToolbar extends Component {
       userToken: null,
       activePage: false,
       isEditing: props.isEditing,
-      navItems:[]
+      navItems:[],
+      inverted: true
     };
 
   }
@@ -76,12 +77,18 @@ class AdminToolbar extends Component {
       this.setState({activePage: false})
     }
     this.forceUpdate()
+      if(nextProps.appSettings.theme === 'dark'){
+        this.setState({inverted:true})
+      }
+      else{
+        this.setState({inverted:false})
+      }
   }
 
   render() {
     return (
       <nav className="navbar navbar-default" style={{backgroundColor: '#1B1C1D', marginLeft:-20, zIndex:500, width:'100vw', bottom:0, position:'fixed'  }}>
-        <Menu inverted secondary style={{height:50, paddingLeft:10, marginLeft:10, width:'100vw'}}>
+        <Menu inverted={this.state.inverted} secondary style={{height:50, paddingLeft:10, marginLeft:10, width:'100vw'}}>
             <Menu.Item name='Admin Toolbar'>
               Admin Toolbar
             </Menu.Item>
@@ -175,10 +182,11 @@ class AdminToolbar extends Component {
 }
 
 const mapStateToProps = state => {
-    const { selectedPage, divisionsBypage } = state
+    const { selectedPage, divisionsBypage, appSettings } = state
 
     return {
       selectedPage,
+      appSettings,
       divisionsBypage
     }
 }

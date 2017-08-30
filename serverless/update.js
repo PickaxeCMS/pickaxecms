@@ -14,11 +14,13 @@ export async function main(event, context, callback) {
     divisions = :divisions,\
     displayName = :displayName,\
     category = :category,\
+    appSettings = :appSettings,\
     navItems = :navItems ',
     ExpressionAttributeValues: {
       ':divisions': data.divisions ? data.divisions : null,
       ':displayName': data.displayName ? data.displayName : null,
       ':category': data.category ? data.category : null,
+      ':appSettings': data.appSettings ? data.appSettings : null,
       ':sections': data.sections ? data.sections : null,
       ':navItems': data.navItems ? data.navItems : null
     },

@@ -15,7 +15,6 @@ import configureStore, { client } from './redux/store/configureStore'
 import {
     // non protected views
     Home,
-    Admin,
     Pages
   } from './containers'
 
@@ -28,7 +27,6 @@ export const Routes = ({ childProps }) => {
       <Router history={browserHistory}>
         <AppliedRoute path="/" exact component={Home}  />
         <UnauthenticatedRoute path="/login" exact component={Login} />
-        <AuthenticatedRoute path="/admin" exact component={Admin} props={childProps}/>
         <Route path="/pages/:id" exact component={Pages} />
         <Route component={NotFound} />
       </Router>

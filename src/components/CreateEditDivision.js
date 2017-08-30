@@ -83,6 +83,24 @@ class CreateEditDivision extends Component {
 
   }
 
+  handleCarouselFileChange = async (index, subSectionIndex, event) => {
+    var type = event.target.files[0].type.split('/');
+    try {
+        const uploadedFilename = null
+        await s3Upload(event.target.files[0], this.props.userToken).then(data =>{
+          var currentItem = this.state.currentItem;
+          currentItem.sections.carousel.push({file: data.Location, type:type[0]});
+          this.setState({currentItem})
+          this.setState({loadingVideo:false})
+        })
+      }
+      catch(e) {
+        alert(e);
+        this.setState({ isLoading: false });
+      }
+
+  }
+
   handleNewSection = (e, {value}) => {
     var currentItem = this.state.currentItem;
     if(!currentItem.sections.sections){
@@ -305,9 +323,6 @@ class CreateEditDivision extends Component {
                   onChange={this.handleFileChange}
                   id="file"
                 />
-              {
-                !this.state.currentItem.sections.sections || this.state.currentItem.sections.sections.length !== 3
-                ?
                 <Grid.Column style={{flexGrow: 1}}>
                   <Form.Group inline>
                     <label>Image Location</label>
@@ -316,9 +331,6 @@ class CreateEditDivision extends Component {
                     <Form.Radio label='Bottom' value='bottom' checked={this.state.currentItem.sections.attachment.style === 'bottom'} onChange={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.attachment.style = value; this.setState({currentItem})}} />
                   </Form.Group>
                 </Grid.Column>
-                :
-                null
-              }
               <Button onClick={this.handleSubmitDivision} color='teal'>Save</Button>
               <Button onClick={() => this.setState({preview: !this.state.preview})}>Show Preview</Button>
               <Button onClick={this.handleCancelModal}>Cancel</Button>

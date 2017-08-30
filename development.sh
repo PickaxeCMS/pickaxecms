@@ -27,7 +27,7 @@ if [[ "$stack_info" =~ "OutputKey" ]]; then
 fi
 
 
-item=$(aws dynamodb get-item --table-name $STACK_NO_WHITESPACE --key file://serverless/get_site_plan.json --output json)
+item=$(aws dynamodb get-item --table-name $STACK_NO_WHITESPACE --key file://./json/get_site_plan.json --output json)
 
 echo $item > ./json/site_plan_dynamo.json
 

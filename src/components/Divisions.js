@@ -4,6 +4,7 @@ import _ from 'lodash'
 import { invokeApig } from '../libs/awsLib';
 import { Button, Image, Icon,  Grid, Popup } from 'semantic-ui-react'
 import AdminToolbar from './AdminToolbar';
+import AdminSidebar from './AdminSidebar';
 import CreateEditDivision from './CreateEditDivision';
 import CreateEditPage from './CreateEditPage';
 import MediaQuery from 'react-responsive';
