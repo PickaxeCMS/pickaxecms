@@ -1,0 +1,34 @@
+{
+  "pageId": {
+    "S": "site_plan"
+  },
+  "id": {
+    "S": "site_plan"
+  },
+  "category": {
+    "S": "page"
+  },
+  "navItems": {
+    "M": {}
+  },
+  "appSettings": {
+    "M": {
+      "name": {
+        "S": "SuperCoolApp"
+      },
+      "theme": {
+        "S": "dark"
+      },
+      "logo": {
+        "S": "https://s3.amazonaws.com/supercoolapp-serverless-prod-s3uploads-283tpxjp9vfh/logo.png"
+      }
+    }
+  },
+  "divisionsOrder": {
+    "L": [
+      {
+        "S": "3658fdaf-750b-57ae-d5c2-d4568de20234"
+      }
+    ]
+  }
+}
