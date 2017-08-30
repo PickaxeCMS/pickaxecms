@@ -449,7 +449,8 @@ export default class Divisions extends Component {
     await this.saveDivision({
       id:'site_plan',
       pageId: 'site_plan',
-      navItems:navObject.navItems
+      navItems:navObject.navItems,
+      appSettings:navObject.appSettings,
     });
     const { router } = this.context
     router.push({ pathname: `/` })
@@ -460,7 +461,8 @@ export default class Divisions extends Component {
     await this.saveDivision({
       id:'site_plan',
       pageId: 'site_plan',
-      navItems:navObject.navItems
+      navItems:navObject.navItems,
+      appSettings:navObject.appSettings,
     });
     const { router } = this.context
     router.push({ pathname: `/` })
