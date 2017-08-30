@@ -1,1 +1,1 @@
-{ "Item": { "category": { "S": "page" }, "pageId": { "S": "site_plan" }, "appSettings": { "M": { "logo": { "S": "https://s3.amazonaws.com/ampsight-serverless-prod-s3uploads-j06wpgejt305/Logo-transparent-background.png" }, "theme": { "S": "dark" }, "name": { "S": "Ampsight" } } }, "navItems": { "M": {} }, "divisionsOrder": { "L": [ { "S": "3658fdaf-750b-57ae-d5c2-d4568de20234" } ] }, "id": { "S": "site_plan" } } }
+
