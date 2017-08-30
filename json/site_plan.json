@@ -14,13 +14,13 @@
   "appSettings": {
     "M": {
       "name": {
-        "S": "Ampsight"
+        "S": "Pickaxe"
       },
       "theme": {
         "S": "dark"
       },
       "logo": {
-        "S": "https://s3.amazonaws.com/ampsight-serverless-prod-s3uploads-j06wpgejt305/logo.png"
+        "S": "https://s3.amazonaws.com/pickaxe-serverless-prod-s3uploads-ajb48z9we1ml/logo.png"
       }
     }
   },

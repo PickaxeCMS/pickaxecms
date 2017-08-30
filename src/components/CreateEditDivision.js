@@ -8,6 +8,11 @@ import config from '../config.js';
 import { invokeApig, s3Upload } from '../libs/awsLib';
 import ReactPlayer from 'react-player'
 import './CreateDivision.css';
+import {
+  selectPage,
+  fetchDivisionsIfNeeded,
+  invalidatepage
+} from '../redux/actions/divisionsActions'
 const SectionOptions = [
   { key: 'i', text: 'Image', value: 'image' },
   { key: 't', text: 'Text', value: 'text' },
@@ -46,6 +51,7 @@ class CreateEditDivision extends Component {
 
   handleFileChange = async (event) => {
     this.setState({loadingVideo:true})
+    console.log('event.target.files[0]', event.target.files[0])
     var type = event.target.files[0].type.split('/');
     try {
       const uploadedFilename = null
@@ -156,9 +162,11 @@ class CreateEditDivision extends Component {
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
       if(this.props.selectedPage === 'site_plan'){
+        this.props.dispatch(fetchDivisionsIfNeeded(this.props.selectedPage))
         router.push({ pathname: `/` })
       }
       else{
+        this.props.dispatch(fetchDivisionsIfNeeded(this.props.selectedPage))
         router.push({ pathname: `/pages/${divisionsObject.pageId}` })
       }
     }
@@ -474,10 +482,11 @@ CreateEditDivision.contextTypes = {
 }
 
 const mapStateToProps = state => {
-  const { selectedPage, divisionsBypage } = state
+  const { selectedPage, divisionsBypage, dispatch } = state
 
   return {
     selectedPage,
+    dispatch,
     divisionsBypage
   }
 }

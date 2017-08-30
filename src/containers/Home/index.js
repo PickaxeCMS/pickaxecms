@@ -11,7 +11,7 @@ import {
 } from '../../redux/actions/appSettingsActions'
 import MediaQuery from 'react-responsive';
 import ReactPlayer from 'react-player'
-import {Sidebar, Menu, Image, Dropdown, Icon, Segment, Form, Button, Input, Header } from 'semantic-ui-react'
+import { Sidebar, Menu, Image, Dropdown, Icon, Segment, Form, Button, Input, Header } from 'semantic-ui-react'
 import Navbar from '../../components/Navbar';
 import AdminSidebar from '../../components/AdminSidebar';
 import { CognitoUserPool, } from 'amazon-cognito-identity-js';
@@ -88,8 +88,10 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps) {
+    const { dispatch, selectedPage } = this.props
+    console.log('PREV PROPS', prevProps)
+    console.log('REGULAR PROPS', this.props)
     if (this.props.selectedPage !== prevProps.selectedPage) {
-      const { dispatch, selectedPage } = this.props
       dispatch(fetchDivisionsIfNeeded(selectedPage))
     }
   }
@@ -110,8 +112,8 @@ class Home extends Component {
       <Segment basic style={{ fontFace:'google', backgroundColor: '#F4F8F9', color: '#27292A', minHeight:'100vh' }}>
           <Helmet>
                <meta charSet="utf-8" />
-               <title>{this.state.appSettings.name}</title>
-               <link rel="icon" href={this.state.appSettings.logo} />
+               <title>{appSettings.name}</title>
+               <link rel="icon" href={appSettings.logo} />
            </Helmet>
           <Sidebar style={{zIndex:50000}} as={Menu} animation='scale down' width='wide' visible={this.state.showSidebar} vertical inverted={this.state.inverted}>
             <Menu.Item style={{textAlign:'center'}}>

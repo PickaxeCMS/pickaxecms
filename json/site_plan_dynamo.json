@@ -1,9 +1,1 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-{ "Item": { "category": { "S": "page" }, "pageId": { "S": "site_plan" }, "appSettings": { "M": { "logo": { "S": "https://s3.amazonaws.com/supercoolapp-serverless-prod-s3uploads-283tpxjp9vfh/logo.png" }, "theme": { "S": "dark" }, "name": { "S": "SuperCoolApp" } } }, "navItems": { "M": {} }, "divisionsOrder": { "L": [ { "S": "3658fdaf-750b-57ae-d5c2-d4568de20234" } ] }, "id": { "S": "site_plan" } } }
-=======
-{ "Item": { "category": { "S": "page" }, "pageId": { "S": "site_plan" }, "appSettings": { "M": { "logo": { "S": "https://s3.amazonaws.com/ampsight-serverless-prod-s3uploads-j06wpgejt305/Logo-transparent-background.png" }, "theme": { "S": "dark" }, "name": { "S": "Ampsight" } } }, "navItems": { "M": {} }, "divisionsOrder": { "L": [ { "S": "3658fdaf-750b-57ae-d5c2-d4568de20234" } ] }, "id": { "S": "site_plan" } } }
->>>>>>> 18d7f96e4fd3671a8221871c5301358634bf9747
-=======
-
->>>>>>> d47f23709de5aac41efb48b13ef95641bfcfe2c3
+{ "Item": { "category": { "S": "page" }, "pageId": { "S": "site_plan" }, "appSettings": { "M": { "logo": { "S": "https://s3.amazonaws.com/pickaxe-serverless-prod-s3uploads-ajb48z9we1ml/logo.png" }, "theme": { "S": "dark" }, "name": { "S": "Pickaxe" } } }, "navItems": { "M": {} }, "divisionsOrder": { "L": [ { "S": "3658fdaf-750b-57ae-d5c2-d4568de20234" } ] }, "id": { "S": "site_plan" } } }
