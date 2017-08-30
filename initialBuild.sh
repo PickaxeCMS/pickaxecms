@@ -52,7 +52,7 @@ jq -n --arg STACK "$STACK" --arg LOGO_S3_URL "$LOGO_S3_URL"  '{
     "name": {"S": $STACK},
     "theme": {"S": "dark"},
     "logo": {"S": $LOGO_S3_URL }
-  }}
+  }},
   "divisionsOrder": {"L": [
       {"S": "3658fdaf-750b-57ae-d5c2-d4568de20234"}
     ]}
