@@ -10,6 +10,9 @@ import {
 import './Login.css';
 import logo from '../../media/logo.png'
 import config from '../../config.js';
+import {
+  fetchAppSettings
+} from '../../redux/actions/appSettingsActions'
 
 class Login extends Component{
 
@@ -22,14 +25,19 @@ class Login extends Component{
       password: '',
       newPassword: '',
     };
+    console.log('props', props)
   }
 
   componentWillMount() {
     document.body.classList.add('login')
+    this.props.dispatch(fetchAppSettings('site_plan'))
   }
 
   componentWillUnmount() {
     document.body.classList.remove('login')
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('nextProps', nextProps)
   }
 
   render() {
@@ -41,7 +49,7 @@ class Login extends Component{
       >
         <Grid.Column style={{ maxWidth: 450 }}>
           <Header as='h2' color='teal' textAlign='center'>
-            <Image src={logo} />
+            <Image src={this.props.appSettings.logo} />
             {' '}Log-in to your account
           </Header>
           <Form size='large'>
@@ -170,7 +178,8 @@ class Login extends Component{
 
 }
 Login.propTypes = {
-    selectedPage: PropTypes.string.isRequired,
+    selectedPage: PropTypes.string,
+    appSettings: PropTypes.object,
     children: PropTypes.node,
     history: PropTypes.object,
     location: PropTypes.object,
@@ -178,16 +187,17 @@ Login.propTypes = {
     posts: PropTypes.array,
     dispatch: PropTypes.func.isRequired,
     lastUpdated: PropTypes.number,
-    isFetching: PropTypes.bool.isRequired,
+    isFetching: PropTypes.bool,
 }
 Login.contextTypes = {
     router: PropTypes.object
 }
 
 const mapStateToProps = state => {
-    const { userToken } = state
+    const { userToken, appSettings } = state
     return {
-      userToken
+      userToken,
+      appSettings
     }
 }
 export default connect(mapStateToProps)(Login);
