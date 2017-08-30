@@ -162,7 +162,7 @@ class CreateEditDivision extends Component {
       this.setState({showModal:false, isLoading: false, currentItem:{ sections:{attachment: {style:'top'}}}})
       const { router } = this.context
       if(this.props.selectedPage === 'site_plan'){
-        this.props.dispatch(fetchDivisionsIfNeeded(this.props.selectedPage))
+        this.props.dispatch(fetchDivisionsIfNeeded('site_plan'))
         router.push({ pathname: `/` })
       }
       else{
