@@ -414,7 +414,7 @@ class CreateEditDivision extends Component {
                             }
                           </div>
                           :
-                          <p>{subSection}</p>
+                          <div dangerouslySetInnerHTML={{ __html: this.props.match.description }} />
                         }
                       </Grid.Column>
                     )

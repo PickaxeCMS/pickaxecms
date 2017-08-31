@@ -248,7 +248,7 @@ export default class Divisions extends Component {
                                 }
                               </div>
                               :
-                              <p>{subSection}</p>
+                              <div dangerouslySetInnerHTML={{ __html: subSection }} />
                             }
                           </Grid.Column>
                         )
