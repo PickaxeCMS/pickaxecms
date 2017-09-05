@@ -238,11 +238,11 @@ export default class Divisions extends Component {
                             {
                               subSection.type
                               ?
-                              <div>
+                              <div style={{marginLeft:'auto', marginRight:'auto', display:'block'}}>
                                 {
                                   subSection.attachment
                                   ?
-                                  <Image style={{flexGrow: 1}} src={subSection.attachment.file} />
+                                  <Image style={{display:'inline'}} src={subSection.attachment.file} />
                                   :
                                   null
                                 }
