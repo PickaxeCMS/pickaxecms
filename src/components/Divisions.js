@@ -143,9 +143,9 @@ export default class Divisions extends Component {
                   {
                     division && division.sections && division.sections.attachment && division.sections.attachment.style === "banner-top" && division.sections.attachment.type === "image"
                     ?
-                    <Grid style={{width:'100vw'}}>
-                      <Grid.Column style={{width:'100vw'}}>
-                        <Image style={{width:'100vw'}} src={division.sections.attachment.file} />
+                    <Grid style={{width:'105vw'}}>
+                      <Grid.Column style={{width:'105vw'}}>
+                        <Image style={{width:'105vw', marginLeft:'-18px'}} src={division.sections.attachment.file} />
                       </Grid.Column>
                     </Grid>
                     :

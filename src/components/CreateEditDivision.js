@@ -229,7 +229,7 @@ class CreateEditDivision extends Component {
                           subSection.type
                           ?
                           <div style={{flexGrow: 1}}>
-                            <Button basic compact negative size='tiny' style={{float:'right', marginBottom:0}} icon='delete' onClick={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.sections.splice(i, 1);  this.setState({currentItem})}} />
+                            <Button basic compact negative size='tiny' style={{float:'right', marginBottom:0}} icon='delete' onClick={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.sections[i].splice(s, 1);  this.setState({currentItem})}} />
                               {
                                 subSection.attachment
                                 ?
@@ -246,7 +246,7 @@ class CreateEditDivision extends Component {
                           </div>
                           :
                           <div style={{flexGrow: 1, marginLeft:10, marginRight:5}}>
-                              <Button basic compact negative size='tiny' style={{float:'right', marginBottom:-20}} icon='delete' onClick={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.sections.splice(i, 1);  this.setState({currentItem})}} />
+                              <Button basic compact negative size='tiny' style={{float:'right', marginBottom:-20}} icon='delete' onClick={(e, {value}) => {var currentItem = this.state.currentItem; currentItem.sections.sections[i].splice(s, 1); ; this.setState({currentItem})}} />
                               <Form.TextArea
                                 style={{width:'100%'}}
                                 label="Section"
