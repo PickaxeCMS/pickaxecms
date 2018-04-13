@@ -8,6 +8,7 @@ STACK=$1;
 STACK_NO_WHITESPACE="$(echo -e "${STACK}" | tr -d '[:space:]')"
 STACKNAME="$STACK_NO_WHITESPACE-serverless-prod";
 export REACT_APP_AWS_REGION=$2 || 'us-east-1';
+export AWS_DEFAULT_REGION=$2 || 'us-east-1';
 
 # This is a standard Bash trick to get the directory the script is running in.
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )";
